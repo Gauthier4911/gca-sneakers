@@ -15,5 +15,5 @@ if (!isConfigured) {
 
 // Valeurs de repli pour ne jamais faire planter l'application au démarrage.
 export const supabase = createClient(url || 'https://configuration-manquante.supabase.co', key || 'missing-key', {
-  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false },
+  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true /* lien « mot de passe oublié » */ },
 });

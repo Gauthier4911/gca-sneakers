@@ -26,13 +26,23 @@ npm run dev               # http://localhost:5173
 
 1. Créer un projet sur https://supabase.com (région conseillée : `eu-west-3` Paris).
 2. **SQL Editor** → exécuter dans l'ordre :
-   `supabase/migrations/001_schema.sql` → `002_functions.sql` → `003_rls.sql` → `004_storage.sql` → `005_realtime_alt.sql` → `006_rls_perf.sql` → `007_analytics.sql`, puis `supabase/seed.sql` (données de démo, facultatif).
+   `supabase/migrations/001_schema.sql` → `002_functions.sql` → `003_rls.sql` → `004_storage.sql` → `005_realtime_alt.sql` → `006_rls_perf.sql` → `007_analytics.sql` → `008_users_admin.sql` → `009_ban_date_fix.sql`, puis `supabase/seed.sql` (données de démo, facultatif).
 3. **Désactiver la confirmation email** : *Authentication → Sign In / Providers → Email* → décocher **Confirm email**.
 4. **Limites anti-abus** (recommandé) : *Authentication → Rate Limits* (laisser les valeurs par défaut ou les baisser).
 5. *Project Settings → API Keys* : copier l'**URL** et la clé **publishable / anon** dans `.env`.
    ⚠️ **Jamais** la clé `service_role` / `secret` dans le site.
 
 > Le projet de production existe déjà : `gca-sneakers` (organisation Sourcia, région Paris).
+
+### Emails (mot de passe oublié) — à configurer
+
+La page **Mot de passe oublié** envoie un lien par email (valable 1 h) qui mène à la page **Nouveau mot de passe**.
+
+1. *Authentication → URL Configuration* :
+   - **Site URL** = `https://gca-sneakers.vercel.app`
+   - **Redirect URLs** : ajouter `https://gca-sneakers.vercel.app/**`
+2. *Authentication → Emails → SMTP Settings* : **activer un SMTP personnalisé**. Le service d'email intégré de Supabase n'envoie qu'aux membres de l'équipe du projet et il est très limité ; sans SMTP, tes clients ne recevront pas le lien. Option gratuite sans nom de domaine : **Brevo** (300 emails par jour). Crée un compte, vérifie ton adresse d'expéditeur, puis copie *SMTP & API → SMTP* (hôte `smtp-relay.brevo.com`, port `587`, identifiant et clé SMTP) dans Supabase.
+3. *Authentication → Emails → Templates → Reset Password* : traduire le message en français si tu le souhaites.
 
 ## 3. Variables d'environnement
 
@@ -61,6 +71,7 @@ Pour retirer les droits : même requête avec `role = 'client'`. L'espace admin 
 - **Produits** : création et modification, **4 photos** (converties en WebP 1200 px), modèle 3D `.glb` facultatif, pointures et stock (avec ajout d'une plage, ex. 36 → 45), prix promo, coup de cœur, visible ou masqué.
 - **Catégories** : création, modification, ordre, suppression.
 - **Visiteurs** (dans le tableau de bord) : visiteurs uniques, pages vues, visiteurs du jour et en ce moment, courbe par jour, pages les plus vues, provenance (Google, Facebook, WhatsApp…), mobile / tablette / ordinateur, FR / EN. Comptage **anonyme** : aucun cookie, aucune adresse IP, « Ne pas suivre » respecté, visites de l'admin non comptées.
+- **Utilisateurs** : tous les comptes (nom, email, WhatsApp, adresse, date d'inscription, dernière connexion, nombre de commandes, montant dépensé), recherche, filtres (clients, admins, bannis), fiche détaillée avec ses commandes. Actions : **passer admin / repasser client**, **bannir** (connexion bloquée, sessions coupées, email interdit de réinscription), **débannir**, **supprimer** (ses commandes passées sont conservées ; option pour bloquer aussi l'email). Liste des emails bloqués avec bouton « Débloquer ». Un admin ne peut ni modifier, ni bannir, ni supprimer son propre compte.
 - **Contenu du site** : logo (fond clair et fond foncé), titres et descriptions **Google** de chaque page, textes de l'accueil (titre, sous-titre, boutons, sections, arguments), témoignages, slogan, pied de page, pages Boutique et Contact, message WhatsApp de commande. **Tout en FR et EN** ; un champ vide garde le texte d'origine.
 - **Paramètres** : numéro WhatsApp de la boutique, adresse de l'entrepôt, horaires, frais de livraison, devise, promo (nombre d'articles et %), vidéo (lien YouTube ou TikTok, ou envoi direct d'un MP4 de 50 Mo max), photos de l'entrepôt, liens TikTok, Instagram, Facebook et WhatsApp.
 

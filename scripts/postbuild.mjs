@@ -177,11 +177,15 @@ Disallow: /fr/commande
 Disallow: /fr/mon-compte
 Disallow: /fr/connexion
 Disallow: /fr/inscription
+Disallow: /fr/mot-de-passe-oublie
+Disallow: /fr/nouveau-mot-de-passe
 Disallow: /en/cart
 Disallow: /en/checkout
 Disallow: /en/account
 Disallow: /en/login
 Disallow: /en/register
+Disallow: /en/forgot-password
+Disallow: /en/reset-password
 
 Sitemap: ${SITE}/sitemap.xml
 `);

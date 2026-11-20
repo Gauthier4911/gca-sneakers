@@ -15,6 +15,8 @@ const Product = lazy(() => import('./pages/Product'));
 const Finder = lazy(() => import('./pages/Finder'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ResetPassword = lazy(() => import('./pages/ResetPassword'));
 const Account = lazy(() => import('./pages/Account'));
 const Cart = lazy(() => import('./pages/Cart'));
 const Checkout = lazy(() => import('./pages/Checkout'));
@@ -30,6 +32,7 @@ const AdminCategories = lazy(() => import('./admin/Categories'));
 const AdminOrders = lazy(() => import('./admin/Orders'));
 const AdminSettings = lazy(() => import('./admin/Settings'));
 const AdminContent = lazy(() => import('./admin/Content'));
+const AdminUsers = lazy(() => import('./admin/Users'));
 
 const PAGES = {
   shop: <Shop />,
@@ -41,6 +44,8 @@ const PAGES = {
   confirmation: <ProtectedRoute><Confirmation /></ProtectedRoute>,
   login: <Login />,
   register: <Register />,
+  forgot: <ForgotPassword />,
+  reset: <ResetPassword />,
   account: <ProtectedRoute><Account /></ProtectedRoute>,
   contact: <Contact />,
   store: <Store />,
@@ -58,6 +63,7 @@ export default function AppRoutes() {
           <Route path="produits/nouveau" element={<AdminProductForm />} />
           <Route path="produits/:id" element={<AdminProductForm />} />
           <Route path="categories" element={<AdminCategories />} />
+          <Route path="utilisateurs" element={<AdminUsers />} />
           <Route path="contenu" element={<AdminContent />} />
           <Route path="parametres" element={<AdminSettings />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />

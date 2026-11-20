@@ -40,6 +40,7 @@ export default function Login() {
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
           <FormField label={t('auth.email')} type="email" autoComplete="email" inputMode="email" error={errors.email?.message} {...register('email')} />
           <FormField label={t('auth.password')} type="password" autoComplete="current-password" error={errors.password?.message} {...register('password')} />
+          <p className="-mt-2 text-right text-sm"><Link to={to('forgot')} className="font-semibold text-emerald hover:underline">{t('auth.forgotLink')}</Link></p>
           {formError && <p role="alert" className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-medium text-red-800">{t(formError)}</p>}
           <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>{isSubmitting ? t('common.loading') : t('auth.loginCta')}</Button>
         </form>

@@ -171,7 +171,9 @@
     "register": "Sign up",
     "account": "My account",
     "contact": "Contact",
-    "store": "Our store"
+    "store": "Our store",
+    "forgot": "Forgot password",
+    "reset": "New password"
   },
   "notFound": {
     "seoTitle": "Page not found — GCA sneakers",
@@ -450,8 +452,26 @@
       "invalidCredentials": "Incorrect email or password.",
       "signupFailed": "Unable to create the account with this information. If you already have an account, log in.",
       "rateLimit": "Too many attempts. Please try again in a few minutes.",
-      "generic": "Something went wrong. Please try again in a moment."
-    }
+      "generic": "Something went wrong. Please try again in a moment.",
+      "banned": "This account is suspended. Contact us on WhatsApp if you think this is a mistake.",
+      "samePassword": "Choose a password different from the old one."
+    },
+    "forgotLink": "Forgot your password?",
+    "forgotSeo": "Forgot password — GCA sneakers",
+    "forgotTitle": "Forgot password",
+    "forgotSubtitle": "Enter your account email: we'll send you a link to choose a new password.",
+    "forgotCta": "Send the link",
+    "forgotSent": "If an account exists with this email, a link has just been sent. Check your spam folder. The link is valid for 1 hour.",
+    "backToLogin": "Back to login",
+    "resetSeo": "New password — GCA sneakers",
+    "resetTitle": "Choose a new password",
+    "resetSubtitle": "Your email is verified. Choose a password you don't use anywhere else.",
+    "newPassword": "New password",
+    "resetCta": "Save the password",
+    "resetDone": "Password changed! You are logged in.",
+    "resetInvalid": "This link is no longer valid (it expired or was already used). Request a new link.",
+    "resetAgain": "Request a new link",
+    "resetChecking": "Checking the link…"
   },
   "account": {
     "seo": "My account — GCA sneakers",
@@ -561,7 +581,8 @@
       "categories": "Categories",
       "orders": "Orders",
       "settings": "Settings",
-      "content": "Site content"
+      "content": "Site content",
+      "users": "Users"
     },
     "common": {
       "save": "Save",
@@ -863,6 +884,69 @@
         "whatsapp_greeting": "Greeting",
         "whatsapp_closing": "Closing sentence of the order message"
       }
+    },
+    "users": {
+      "title": "Users",
+      "count_one": "{{count}} account",
+      "count_other": "{{count}} accounts",
+      "search": "Name, email or WhatsApp…",
+      "filters": {
+        "all": "All",
+        "client": "Customers",
+        "admin": "Admins",
+        "banned": "Banned"
+      },
+      "cols": {
+        "user": "User",
+        "contact": "Contact",
+        "role": "Role",
+        "orders": "Orders",
+        "created": "Signed up",
+        "lastLogin": "Last login",
+        "status": "Status"
+      },
+      "never": "Never",
+      "you": "That's you",
+      "active": "Active",
+      "banned": "Banned",
+      "roles": {
+        "client": "Customer",
+        "admin": "Admin"
+      },
+      "details": "Details",
+      "detailTitle": "User profile",
+      "address": "Address",
+      "spent": "Amount spent (paid)",
+      "ordersList": "Their orders",
+      "noOrders": "No orders.",
+      "changeRole": "Role",
+      "makeAdmin": "Make admin",
+      "makeClient": "Make customer",
+      "ban": "Ban",
+      "unban": "Unban",
+      "delete": "Delete account",
+      "confirmAdmin": "Give ADMIN rights to {{name}}? They will be able to manage everything (products, orders, users).",
+      "confirmClient": "Remove admin rights from {{name}}?",
+      "banReason": "Ban reason (optional, only visible to admins):",
+      "confirmUnban": "Unban {{name}}? They will be able to log in and order again.",
+      "confirmDelete": "PERMANENTLY delete {{name}}'s account? Their past orders are kept.",
+      "alsoBlock": "Also block their email (they won't be able to sign up again)",
+      "done": {
+        "role": "Role updated.",
+        "ban": "User banned: account blocked and email forbidden.",
+        "unban": "User unbanned.",
+        "delete": "Account deleted."
+      },
+      "blocked": "Blocked emails",
+      "blockedHint": "These emails can no longer create an account.",
+      "unblock": "Unblock",
+      "noBlocked": "No blocked emails.",
+      "errors": {
+        "CANNOT_CHANGE_SELF": "You can't change, ban or delete your own account.",
+        "USER_NOT_FOUND": "User not found.",
+        "FORBIDDEN": "Access denied."
+      },
+      "contact": "Message on WhatsApp"
     }
   },
   "store": {

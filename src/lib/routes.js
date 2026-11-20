@@ -14,6 +14,8 @@ export const ROUTES = {
   confirmation: { fr: 'commande/confirmation/:orderNumber', en: 'checkout/confirmation/:orderNumber' },
   login: { fr: 'connexion', en: 'login' },
   register: { fr: 'inscription', en: 'register' },
+  forgot: { fr: 'mot-de-passe-oublie', en: 'forgot-password' },
+  reset: { fr: 'nouveau-mot-de-passe', en: 'reset-password' },
   account: { fr: 'mon-compte', en: 'account' },
   contact: { fr: 'contact', en: 'contact' },
   store: { fr: 'notre-boutique', en: 'our-store' },

@@ -18,6 +18,11 @@ export const loginSchema = z.object({
   password: z.string().min(1, 'auth.errors.required').max(72, 'auth.errors.tooLong'),
 });
 
+export const forgotSchema = z.object({ email });
+
+export const resetSchema = z.object({ password, passwordConfirm: z.string() })
+  .refine((d) => d.password === d.passwordConfirm, { path: ['passwordConfirm'], message: 'auth.errors.passwordMatch' });
+
 export const registerSchema = profileSchema.extend({
   email,
   password,
@@ -29,6 +34,8 @@ export const registerSchema = profileSchema.extend({
 export function authErrorKey(error, mode) {
   const msg = `${error?.code ?? ''} ${error?.message ?? ''}`.toLowerCase();
   if (error?.status === 429 || msg.includes('rate limit') || msg.includes('too many')) return 'auth.errors.rateLimit';
+  if (msg.includes('banned')) return 'auth.errors.banned';
+  if (msg.includes('same_password') || msg.includes('should be different')) return 'auth.errors.samePassword';
   if (mode === 'login') return 'auth.errors.invalidCredentials';
   if (mode === 'register') return 'auth.errors.signupFailed';
   return 'auth.errors.generic';

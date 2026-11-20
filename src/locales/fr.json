@@ -171,7 +171,9 @@
     "register": "Inscription",
     "account": "Mon compte",
     "contact": "Contact",
-    "store": "Notre boutique"
+    "store": "Notre boutique",
+    "forgot": "Mot de passe oublié",
+    "reset": "Nouveau mot de passe"
   },
   "notFound": {
     "seoTitle": "Page introuvable — GCA sneakers",
@@ -450,8 +452,26 @@
       "invalidCredentials": "Email ou mot de passe incorrect.",
       "signupFailed": "Impossible de créer le compte avec ces informations. Si tu as déjà un compte, connecte-toi.",
       "rateLimit": "Trop de tentatives. Réessaie dans quelques minutes.",
-      "generic": "Une erreur est survenue. Réessaie dans un instant."
-    }
+      "generic": "Une erreur est survenue. Réessaie dans un instant.",
+      "banned": "Ce compte est suspendu. Contacte-nous sur WhatsApp si tu penses qu'il s'agit d'une erreur.",
+      "samePassword": "Choisis un mot de passe différent de l'ancien."
+    },
+    "forgotLink": "Mot de passe oublié ?",
+    "forgotSeo": "Mot de passe oublié — GCA sneakers",
+    "forgotTitle": "Mot de passe oublié",
+    "forgotSubtitle": "Indique l'email de ton compte : on t'envoie un lien pour choisir un nouveau mot de passe.",
+    "forgotCta": "Envoyer le lien",
+    "forgotSent": "Si un compte existe avec cet email, un lien vient d'être envoyé. Pense à vérifier tes spams. Le lien est valable 1 heure.",
+    "backToLogin": "Retour à la connexion",
+    "resetSeo": "Nouveau mot de passe — GCA sneakers",
+    "resetTitle": "Choisis un nouveau mot de passe",
+    "resetSubtitle": "Ton email est vérifié. Choisis un mot de passe que tu n'utilises pas ailleurs.",
+    "newPassword": "Nouveau mot de passe",
+    "resetCta": "Enregistrer le mot de passe",
+    "resetDone": "Mot de passe modifié ! Tu es connecté(e).",
+    "resetInvalid": "Ce lien n'est plus valable (il a expiré ou a déjà été utilisé). Demande un nouveau lien.",
+    "resetAgain": "Demander un nouveau lien",
+    "resetChecking": "Vérification du lien…"
   },
   "account": {
     "seo": "Mon compte — GCA sneakers",
@@ -561,7 +581,8 @@
       "categories": "Catégories",
       "orders": "Commandes",
       "settings": "Paramètres",
-      "content": "Contenu du site"
+      "content": "Contenu du site",
+      "users": "Utilisateurs"
     },
     "common": {
       "save": "Enregistrer",
@@ -863,6 +884,69 @@
         "whatsapp_greeting": "Salutation",
         "whatsapp_closing": "Phrase de fin du message de commande"
       }
+    },
+    "users": {
+      "title": "Utilisateurs",
+      "count_one": "{{count}} compte",
+      "count_other": "{{count}} comptes",
+      "search": "Nom, email ou WhatsApp…",
+      "filters": {
+        "all": "Tous",
+        "client": "Clients",
+        "admin": "Admins",
+        "banned": "Bannis"
+      },
+      "cols": {
+        "user": "Utilisateur",
+        "contact": "Contact",
+        "role": "Rôle",
+        "orders": "Commandes",
+        "created": "Inscrit le",
+        "lastLogin": "Dernière connexion",
+        "status": "Statut"
+      },
+      "never": "Jamais",
+      "you": "C'est toi",
+      "active": "Actif",
+      "banned": "Banni",
+      "roles": {
+        "client": "Client",
+        "admin": "Admin"
+      },
+      "details": "Détails",
+      "detailTitle": "Fiche utilisateur",
+      "address": "Adresse",
+      "spent": "Montant dépensé (payé)",
+      "ordersList": "Ses commandes",
+      "noOrders": "Aucune commande.",
+      "changeRole": "Rôle",
+      "makeAdmin": "Passer admin",
+      "makeClient": "Repasser client",
+      "ban": "Bannir",
+      "unban": "Débannir",
+      "delete": "Supprimer le compte",
+      "confirmAdmin": "Donner les droits ADMIN à {{name}} ? Cette personne pourra tout gérer (produits, commandes, utilisateurs).",
+      "confirmClient": "Retirer les droits admin de {{name}} ?",
+      "banReason": "Raison du bannissement (facultatif, visible seulement par l'admin) :",
+      "confirmUnban": "Débannir {{name}} ? Il pourra de nouveau se connecter et commander.",
+      "confirmDelete": "Supprimer DÉFINITIVEMENT le compte de {{name}} ? Ses commandes passées sont conservées.",
+      "alsoBlock": "Bloquer aussi son email (il ne pourra plus créer de compte)",
+      "done": {
+        "role": "Rôle mis à jour.",
+        "ban": "Utilisateur banni : compte bloqué et email interdit.",
+        "unban": "Utilisateur débanni.",
+        "delete": "Compte supprimé."
+      },
+      "blocked": "Emails bloqués",
+      "blockedHint": "Ces emails ne peuvent plus créer de compte.",
+      "unblock": "Débloquer",
+      "noBlocked": "Aucun email bloqué.",
+      "errors": {
+        "CANNOT_CHANGE_SELF": "Tu ne peux pas modifier, bannir ou supprimer ton propre compte.",
+        "USER_NOT_FOUND": "Utilisateur introuvable.",
+        "FORBIDDEN": "Accès refusé."
+      },
+      "contact": "Écrire sur WhatsApp"
     }
   },
   "store": {

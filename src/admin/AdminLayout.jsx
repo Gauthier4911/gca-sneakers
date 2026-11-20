@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BarChart3, ExternalLink, FileText, FolderTree, LogOut, Package, Settings, ShoppingCart } from 'lucide-react';
+import { BarChart3, ExternalLink, FileText, Users as UsersIcon, FolderTree, LogOut, Package, Settings, ShoppingCart } from 'lucide-react';
 import Seo from '../components/seo/Seo';
 import Logo from '../components/ui/Logo';
 import { useAuth } from '../context/AuthContext';
@@ -12,6 +12,7 @@ const LINKS = [
   { to: '/admin', end: true, key: 'dashboard', Icon: BarChart3 },
   { to: '/admin/commandes', key: 'orders', Icon: ShoppingCart },
   { to: '/admin/produits', key: 'products', Icon: Package },
+  { to: '/admin/utilisateurs', key: 'users', Icon: UsersIcon },
   { to: '/admin/categories', key: 'categories', Icon: FolderTree },
   { to: '/admin/contenu', key: 'content', Icon: FileText },
   { to: '/admin/parametres', key: 'settings', Icon: Settings },
