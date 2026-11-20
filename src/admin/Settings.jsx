@@ -16,6 +16,7 @@ export default function Settings() {
   const [form, setForm] = useState(null);
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
+  const [videoBusy, setVideoBusy] = useState(false); // hooks toujours AVANT tout return
 
   useEffect(() => {
     // Lecture directe (l'admin voit aussi les paramètres non publics)
@@ -69,7 +70,6 @@ export default function Settings() {
       toast.error(['badType', 'tooBig'].includes(e.message) ? t(`admin.products.image.${e.message}`) : t('admin.common.error', { message: e.message }));
     }
   };
-  const [videoBusy, setVideoBusy] = useState(false);
   const addVideo = async (file) => {
     if (!file) return;
     setVideoBusy(true);
