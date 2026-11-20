@@ -3,7 +3,7 @@ import fs from 'fs';
 const F = 'node_modules/@fontsource/lexend/files/lexend-latin-';
 const bold = opentype.loadSync(F + '700-normal.woff');
 const semi = opentype.loadSync(F + '500-normal.woff');
-const NAVY = '#1F2B8F', PINK = '#EC2F6B';
+const GREEN = '#0B6E4F', GOLD = '#F2A20C';
 const out = process.argv[2];
 
 const text = (font, str, x, y, size) => font.getPath(str, x, y, size).toPathData(1);
@@ -23,20 +23,20 @@ const pathB = text(semi, 'sneakers', xB, base, sizeB);
 const right = Math.ceil(xB + w(semi, 'sneakers', sizeB)) + 40;
 
 const stroke = (d, c, sw = 16) => `<path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round"/>`;
-const icon = (c1 = NAVY, c2 = PINK) => stroke(upper, c1) + stroke(laces, c1, 13) + stroke(loop, c1, 13) + stroke(sole, c2);
+const icon = (c1 = GREEN, c2 = GOLD) => stroke(upper, c1) + stroke(laces, c1, 13) + stroke(loop, c1, 13) + stroke(sole, c2);
 
 const full = (c1, c2, c3) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 30 ${right - 40} 500" role="img" aria-label="GCA sneakers">
 <title>GCA sneakers</title>
 ${icon(c1, c2)}
 <path d="${pathA}" fill="${c2}"/><path d="${pathB}" fill="${c3}"/>
 </svg>`;
-fs.writeFileSync(out + '/gca-logo.svg', full(NAVY, PINK, NAVY));
-fs.writeFileSync(out + '/gca-logo-white.svg', full('#FFFFFF', PINK, '#FFFFFF'));
+fs.writeFileSync(out + '/gca-logo.svg', full(GREEN, GOLD, GREEN));
+fs.writeFileSync(out + '/gca-logo-white.svg', full('#FFFFFF', GOLD, '#FFFFFF'));
 fs.writeFileSync(out + '/gca-logo-mono.svg', full('#FFFFFF', '#FFFFFF', '#FFFFFF'));
-// icône seule (favicon / avatar réseaux) — semelle rose continue, sur pastille crème
+// icône seule (favicon / avatar réseaux) — semelle orange or continue, sur pastille blanche
 const iconOnly = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-label="GCA sneakers">
-<title>GCA sneakers</title><rect width="640" height="640" rx="144" fill="#FFF8F3"/>
-<g transform="translate(18 120)">${stroke(upper, NAVY, 22)}${stroke(laces, NAVY, 18)}${stroke(loop, NAVY, 18)}${stroke('M84 352 H564', PINK, 26)}</g></svg>`;
+<title>GCA sneakers</title><rect width="640" height="640" rx="144" fill="#FFFFFF"/>
+<g transform="translate(18 120)">${stroke(upper, GREEN, 22)}${stroke(laces, GREEN, 18)}${stroke(loop, GREEN, 18)}${stroke('M84 352 H564', GOLD, 26)}</g></svg>`;
 fs.writeFileSync(out + '/gca-icon.svg', iconOnly);
 // Données pour le composant React animé
 fs.writeFileSync(out + '/logo-paths.json', JSON.stringify({ upper, laces, loop, sole, pathA, pathB, viewBox: `40 30 ${right - 40} 500` }));

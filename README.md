@@ -46,6 +46,21 @@ Pour retirer les droits : même requête avec `role = 'client'`.
 
 Les pointures ne sont pas fixées à l'avance : quand tu ajoutes une chaussure, tu saisis **chaque pointure et le nombre de paires disponibles** (ex. 39 → 4 paires, 40 → 6 paires, 42.5 → 2 paires). Le questionnaire « Trouvez votre paire » ne propose que les pointures réellement en stock.
 
-## 5. Logo
+## 5. Direction artistique
 
-Fichiers dans `public/logo/` : `gca-logo.svg` (couleur), `gca-logo-white.svg` (fond foncé), `gca-logo-mono.svg`, `gca-icon.svg` (favicon / avatar réseaux). Aperçu : `docs/logo-preview.png`.
+Couleurs : **vert, orange or et blanc** (aperçu : `docs/palette.png`).
+
+| Rôle | Couleur | Hex | Règle d'usage |
+|---|---|---|---|
+| Primaire | Vert GCA | `#0B6E4F` | Boutons, titres, liens. Texte blanc dessus (contraste 6.3:1) |
+| Accent | Orange or | `#F2A20C` | Boutons d'action, badges promo, logo. **Toujours avec un texte vert nuit dessus** (7.3:1), jamais de petit texte or sur blanc |
+| Accent texte | Orange foncé | `#B45F06` | Prix promo et liens orange sur fond blanc (4.6:1) |
+| Fond | Blanc | `#FFFFFF` | Fond principal |
+| Fond alterné | Ivoire | `#FFF9EC` | Sections alternées, cartes |
+| Texte | Vert nuit | `#0E2A1F` | Texte courant, pied de page (fond) |
+
+Polices : **Lexend** (titres, proche du logo) + **Inter** (texte).
+
+## 6. Logo
+
+Fichiers dans `public/logo/` : `gca-logo.svg` (couleur, fond blanc), `gca-logo-white.svg` (fond vert ou foncé), `gca-logo-mono.svg`, `gca-icon.svg` (favicon et avatar des réseaux). Aperçu : `docs/logo-preview.png`. Régénération : `scripts/build-logo.mjs`.
