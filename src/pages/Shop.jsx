@@ -9,6 +9,7 @@ import Filters from '../components/product/Filters';
 import ProductGrid from '../components/product/ProductGrid';
 import Button from '../components/ui/Button';
 import NotFound from './NotFound';
+import FinderBanner from '../components/finder/FinderBanner';
 import { useCatalog } from '../hooks/useCatalog';
 import { useFilters } from '../hooks/useFilters';
 import { useLang } from '../hooks/useLang';
@@ -17,13 +18,14 @@ import { formatPrice, formatSize } from '../lib/format';
 import { useSettings } from '../context/SettingsContext';
 
 /** Boutique et page catégorie (même écran, la catégorie est alors fixée par l'URL). */
-export default function Shop({ banner = null }) {
+export default function Shop() {
   const { t } = useTranslation();
   const { lang, to } = useLang();
   const { slug } = useParams();
   const { settings } = useSettings();
   const fixed = useMemo(() => (slug ? { category: slug } : {}), [slug]);
-  const { filters, set, toggle, setBudget, clear } = useFilters(fixed);
+  const { filters, set, toggle, setBudget, clear, searchParams } = useFilters(fixed);
+  const fromFinder = searchParams.get('from') === 'finder';
   const { products, loading, error, reload } = useCatalog();
   const [drawer, setDrawer] = useState(false);
 
@@ -94,7 +96,7 @@ export default function Shop({ banner = null }) {
         </div>
       </header>
 
-      {banner}
+      {fromFinder && !loading && <FinderBanner filters={filters} count={results.length} />}
 
       {chips.length > 0 && (
         <div className="mt-5 flex flex-wrap items-center gap-2" aria-label={t('filters.active')}>
@@ -121,7 +123,7 @@ export default function Shop({ banner = null }) {
               <p className="text-forest">{t('shop.error')}</p>
               <Button onClick={reload} className="mt-4">{t('common.retry')}</Button>
             </div>
-          ) : !loading && results.length === 0 ? (
+          ) : !loading && results.length === 0 && fromFinder ? null : !loading && results.length === 0 ? (
             <div className="rounded-3xl bg-cream p-10 text-center">
               <h2 className="font-display text-2xl font-bold text-forest">{t('shop.empty.title')}</h2>
               <p className="mt-2 text-ink-soft">{t('shop.empty.text')}</p>

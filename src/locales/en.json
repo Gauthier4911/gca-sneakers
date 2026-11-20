@@ -305,5 +305,82 @@
     "dragToRotate": "Drag to rotate the shoe",
     "loading3d": "Loading 3D model…",
     "viewer3d": "3D model of {{name}}: drag to rotate, pinch or scroll to zoom"
+  },
+  "finder": {
+    "seoTitle": "Find your pair — Quiz | GCA sneakers",
+    "seoDescription": "Answer 6 questions and discover the shoes made for you, in your size and budget.",
+    "progress": "Question {{current}} of {{total}}",
+    "back": "Back",
+    "next": "Continue",
+    "skip": "No preference",
+    "restart": "Start over",
+    "pairs_zero": "no pairs",
+    "pairs_one": "{{count}} pair",
+    "pairs_other": "{{count}} pairs",
+    "loading": "Preparing your options…",
+    "steps": {
+      "gender": {
+        "title": "Who are the shoes for?",
+        "hint": "Let's start with the basics."
+      },
+      "type": {
+        "title": "What kind of shoes?",
+        "hint": "Only available types are shown."
+      },
+      "size": {
+        "title": "What's your size?",
+        "hint": "Only sizes currently in stock.",
+        "kidsHint": "Kids' sizes only, currently in stock."
+      },
+      "usage": {
+        "title": "For which occasion?",
+        "hint": "You can pick several."
+      },
+      "budget": {
+        "title": "What's your budget?",
+        "hint": "Prices in {{currency}}, deals included."
+      },
+      "style": {
+        "title": "A favourite colour or material?",
+        "hint": "Optional: skip if you have no preference.",
+        "color": "Colour",
+        "material": "Material"
+      }
+    },
+    "summary": {
+      "title": "Your choice",
+      "hint": "Check your answers before seeing the shoes.",
+      "edit": "Edit",
+      "cta": "Show my shoes",
+      "any": "No preference",
+      "labels": {
+        "gender": "For",
+        "type": "Type",
+        "size": "Size",
+        "usage": "Occasion",
+        "budget": "Budget",
+        "color": "Colour",
+        "material": "Material"
+      },
+      "matches_zero": "No pair matches exactly: we'll suggest widening your criteria.",
+      "matches_one": "{{count}} pair matches your criteria!",
+      "matches_other": "{{count}} pairs match your criteria!"
+    },
+    "banner": {
+      "title": "Your personal selection",
+      "why": "These shoes are suggested because they match your answers:",
+      "stock": "All of them are in stock in your size.",
+      "edit": "Retake the quiz",
+      "emptyTitle": "No pair matches all your criteria",
+      "emptyText": "Widen your search in one click:",
+      "widen": {
+        "colors": "Ignore colour",
+        "materials": "Ignore material",
+        "usages": "Ignore occasion",
+        "budget": "Ignore budget",
+        "types": "All types",
+        "sizes": "All sizes"
+      }
+    }
   }
 }

@@ -305,5 +305,82 @@
     "dragToRotate": "Fais glisser pour tourner la chaussure",
     "loading3d": "Chargement du modèle 3D…",
     "viewer3d": "Modèle 3D de {{name}} : fais glisser pour tourner, pince ou molette pour zoomer"
+  },
+  "finder": {
+    "seoTitle": "Trouvez votre paire — Questionnaire | GCA sneakers",
+    "seoDescription": "Réponds à 6 questions et découvre les chaussures faites pour toi, dans ta pointure et ton budget.",
+    "progress": "Question {{current}} sur {{total}}",
+    "back": "Retour",
+    "next": "Continuer",
+    "skip": "Peu importe",
+    "restart": "Recommencer",
+    "pairs_zero": "aucune paire",
+    "pairs_one": "{{count}} paire",
+    "pairs_other": "{{count}} paires",
+    "loading": "On prépare tes options…",
+    "steps": {
+      "gender": {
+        "title": "Pour qui cherches-tu des chaussures ?",
+        "hint": "On commence par l'essentiel."
+      },
+      "type": {
+        "title": "Quel type de chaussures ?",
+        "hint": "Seuls les types disponibles sont proposés."
+      },
+      "size": {
+        "title": "Quelle est ta pointure ?",
+        "hint": "Uniquement les pointures en stock en ce moment.",
+        "kidsHint": "Pointures enfant uniquement, en stock en ce moment."
+      },
+      "usage": {
+        "title": "Pour quelle occasion ?",
+        "hint": "Tu peux en choisir plusieurs."
+      },
+      "budget": {
+        "title": "Quel est ton budget ?",
+        "hint": "Prix en {{currency}}, promos comprises."
+      },
+      "style": {
+        "title": "Une couleur ou une matière préférée ?",
+        "hint": "Facultatif : passe si tu n'as pas de préférence.",
+        "color": "Couleur",
+        "material": "Matière"
+      }
+    },
+    "summary": {
+      "title": "Ton choix",
+      "hint": "Vérifie tes réponses avant de voir les chaussures.",
+      "edit": "Modifier",
+      "cta": "Voir mes chaussures",
+      "any": "Peu importe",
+      "labels": {
+        "gender": "Pour",
+        "type": "Type",
+        "size": "Pointure",
+        "usage": "Occasion",
+        "budget": "Budget",
+        "color": "Couleur",
+        "material": "Matière"
+      },
+      "matches_zero": "Aucune paire ne correspond exactement : on te proposera d'élargir tes critères.",
+      "matches_one": "{{count}} paire correspond à tes critères !",
+      "matches_other": "{{count}} paires correspondent à tes critères !"
+    },
+    "banner": {
+      "title": "Ta sélection personnalisée",
+      "why": "Ces chaussures te sont proposées parce qu'elles correspondent à tes réponses :",
+      "stock": "Toutes sont en stock dans ta pointure.",
+      "edit": "Refaire le questionnaire",
+      "emptyTitle": "Aucune paire ne correspond à tous tes critères",
+      "emptyText": "Élargis ta recherche en un clic :",
+      "widen": {
+        "colors": "Ignorer la couleur",
+        "materials": "Ignorer la matière",
+        "usages": "Ignorer l'occasion",
+        "budget": "Ignorer le budget",
+        "types": "Tous les types",
+        "sizes": "Toutes les pointures"
+      }
+    }
   }
 }

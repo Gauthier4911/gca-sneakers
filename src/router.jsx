@@ -11,13 +11,14 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const ComingSoon = lazy(() => import('./pages/ComingSoon'));
 const Shop = lazy(() => import('./pages/Shop'));
 const Product = lazy(() => import('./pages/Product'));
+const Finder = lazy(() => import('./pages/Finder'));
 
 // Pages des étapes suivantes : remplacées au fur et à mesure.
 const PAGES = {
   shop: <Shop />,
   category: <Shop />,
   product: <Product />,
-  finder: <ComingSoon titleKey="pages.finder" />,
+  finder: <Finder />,
   cart: <ComingSoon titleKey="pages.cart" />,
   checkout: <ComingSoon titleKey="pages.checkout" />,
   confirmation: <ComingSoon titleKey="pages.confirmation" />,
