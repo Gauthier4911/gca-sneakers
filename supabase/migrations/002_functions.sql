@@ -1,5 +1,5 @@
 -- =============================================================================
--- Snika — 002 : fonctions, triggers et RPC
+-- GCA sneakers — 002 : fonctions, triggers et RPC
 -- =============================================================================
 -- Codes d'erreur renvoyés au front (traduits via i18n) : NOT_AUTHENTICATED,
 -- FORBIDDEN, PROFILE_INCOMPLETE, ADDRESS_REQUIRED, INVALID_CART, OUT_OF_STOCK,

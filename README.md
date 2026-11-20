@@ -1,4 +1,4 @@
-# Snika store 👟
+# GCA sneakers 👟
 
 Boutique en ligne de chaussures (Homme, Femme, Enfant). Stack : React (Vite) + Tailwind + Framer Motion + i18next, avec Supabase pour la base, l'authentification et le stockage. Le paiement se finalise sur WhatsApp.
 
@@ -48,4 +48,4 @@ Les pointures ne sont pas fixées à l'avance : quand tu ajoutes une chaussure, 
 
 ## 5. Logo
 
-Fichiers dans `public/logo/` : `snika-logo.svg` (couleur), `snika-logo-white.svg` (fond foncé), `snika-logo-mono.svg`, `snika-icon.svg` (favicon / avatar réseaux). Aperçu : `docs/logo-preview.png`.
+Fichiers dans `public/logo/` : `gca-logo.svg` (couleur), `gca-logo-white.svg` (fond foncé), `gca-logo-mono.svg`, `gca-icon.svg` (favicon / avatar réseaux). Aperçu : `docs/logo-preview.png`.

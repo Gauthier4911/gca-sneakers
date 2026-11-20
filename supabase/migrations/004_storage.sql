@@ -1,5 +1,5 @@
 -- =============================================================================
--- Snika — 004 : Supabase Storage (buckets + policies)
+-- GCA sneakers — 004 : Supabase Storage (buckets + policies)
 -- =============================================================================
 -- product-images : 4 photos par produit         (jpg/png/webp, 5 Mo max)
 -- product-models : modèles 3D .glb (optionnels) (15 Mo max)
@@ -19,18 +19,18 @@ on conflict (id) do update
       file_size_limit = excluded.file_size_limit,
       allowed_mime_types = excluded.allowed_mime_types;
 
-create policy "snika_public_read" on storage.objects
+create policy "gca_public_read" on storage.objects
   for select using (bucket_id in ('product-images', 'product-models', 'site-media'));
 
-create policy "snika_admin_insert" on storage.objects
+create policy "gca_admin_insert" on storage.objects
   for insert to authenticated
   with check (bucket_id in ('product-images', 'product-models', 'site-media') and public.is_admin());
 
-create policy "snika_admin_update" on storage.objects
+create policy "gca_admin_update" on storage.objects
   for update to authenticated
   using (bucket_id in ('product-images', 'product-models', 'site-media') and public.is_admin())
   with check (bucket_id in ('product-images', 'product-models', 'site-media') and public.is_admin());
 
-create policy "snika_admin_delete" on storage.objects
+create policy "gca_admin_delete" on storage.objects
   for delete to authenticated
   using (bucket_id in ('product-images', 'product-models', 'site-media') and public.is_admin());

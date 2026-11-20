@@ -17,27 +17,27 @@ const sole  = `M84 340 H150 V364 M564 340 H498 V364 M150 470 V494 H498 V470`;
 
 const sizeA = 118, sizeB = 92, base = 452;
 const xA = 112;
-const pathA = text(bold, 'Snika', xA, base, sizeA);
-const xB = xA + w(bold, 'Snika', sizeA) + 26;
-const pathB = text(semi, 'store', xB, base, sizeB);
-const right = Math.ceil(xB + w(semi, 'store', sizeB)) + 40;
+const pathA = text(bold, 'GCA', xA, base, sizeA);
+const xB = xA + w(bold, 'GCA', sizeA) + 26;
+const pathB = text(semi, 'sneakers', xB, base, sizeB);
+const right = Math.ceil(xB + w(semi, 'sneakers', sizeB)) + 40;
 
 const stroke = (d, c, sw = 16) => `<path d="${d}" fill="none" stroke="${c}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round"/>`;
 const icon = (c1 = NAVY, c2 = PINK) => stroke(upper, c1) + stroke(laces, c1, 13) + stroke(loop, c1, 13) + stroke(sole, c2);
 
-const full = (c1, c2, c3) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 30 ${right - 40} 500" role="img" aria-label="Snika store">
-<title>Snika store</title>
+const full = (c1, c2, c3) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 30 ${right - 40} 500" role="img" aria-label="GCA sneakers">
+<title>GCA sneakers</title>
 ${icon(c1, c2)}
 <path d="${pathA}" fill="${c2}"/><path d="${pathB}" fill="${c3}"/>
 </svg>`;
-fs.writeFileSync(out + '/snika-logo.svg', full(NAVY, PINK, NAVY));
-fs.writeFileSync(out + '/snika-logo-white.svg', full('#FFFFFF', PINK, '#FFFFFF'));
-fs.writeFileSync(out + '/snika-logo-mono.svg', full('#FFFFFF', '#FFFFFF', '#FFFFFF'));
+fs.writeFileSync(out + '/gca-logo.svg', full(NAVY, PINK, NAVY));
+fs.writeFileSync(out + '/gca-logo-white.svg', full('#FFFFFF', PINK, '#FFFFFF'));
+fs.writeFileSync(out + '/gca-logo-mono.svg', full('#FFFFFF', '#FFFFFF', '#FFFFFF'));
 // icône seule (favicon / avatar réseaux) — semelle rose continue, sur pastille crème
-const iconOnly = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-label="Snika">
-<title>Snika</title><rect width="640" height="640" rx="144" fill="#FFF8F3"/>
+const iconOnly = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-label="GCA sneakers">
+<title>GCA sneakers</title><rect width="640" height="640" rx="144" fill="#FFF8F3"/>
 <g transform="translate(18 120)">${stroke(upper, NAVY, 22)}${stroke(laces, NAVY, 18)}${stroke(loop, NAVY, 18)}${stroke('M84 352 H564', PINK, 26)}</g></svg>`;
-fs.writeFileSync(out + '/snika-icon.svg', iconOnly);
+fs.writeFileSync(out + '/gca-icon.svg', iconOnly);
 // Données pour le composant React animé
 fs.writeFileSync(out + '/logo-paths.json', JSON.stringify({ upper, laces, loop, sole, pathA, pathB, viewBox: `40 30 ${right - 40} 500` }));
 console.log('ok', right);

@@ -1,5 +1,5 @@
 -- =============================================================================
--- Snika — 003 : Row Level Security (activée sur TOUTES les tables)
+-- GCA sneakers — 003 : Row Level Security (activée sur TOUTES les tables)
 -- =============================================================================
 
 alter table public.profiles         enable row level security;

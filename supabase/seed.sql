@@ -1,15 +1,15 @@
 -- =============================================================================
--- Snika — données de démonstration (à exécuter APRÈS les migrations)
+-- GCA sneakers — données de démonstration (à exécuter APRÈS les migrations)
 -- =============================================================================
 -- Les images /demo/*.svg sont des illustrations livrées dans /public/demo.
 -- Remplace-les par tes vraies photos depuis l'admin.
 
 -- ---------- Paramètres ------------------------------------------------------
 insert into public.settings (key, value, is_public) values
-  ('store_name',        '"Snika"', true),
+  ('store_name',        '"GCA sneakers"', true),
   ('currency',          '"FCFA"', true),
   ('whatsapp_number',   '"2250700000000"', true),   -- format international sans "+"
-  ('warehouse_address', '"Entrepôt Snika — à compléter dans l''admin"', true),
+  ('warehouse_address', '"Entrepôt GCA sneakers — à compléter dans l''admin"', true),
   ('delivery_fee',      '1500', true),
   ('promo_threshold',   '5', true),
   ('promo_percent',     '10', true),
@@ -32,40 +32,40 @@ on conflict (slug) do nothing;
 -- ---------- Produits (créés inactifs, puis activés après les 4 photos) -------
 with data (cat, gender, slug, name_fr, name_en, desc_fr, desc_en, shoe_type, usages, color, material, price, promo, featured, sizes) as (
   values
-  ('sneakers','men','snika-air-street-noir','Air Street Noir','Air Street Black',
+  ('sneakers','men','gca-air-street-noir','Air Street Noir','Air Street Black',
    'Sneaker urbaine légère, semelle amortissante, parfaite au quotidien.','Lightweight urban sneaker with a cushioned sole, perfect for everyday wear.',
    'sneakers','{daily,work}','black','mesh', 45000, 39000, true, '{39,40,41,42,43,44,45}'),
-  ('sneakers','men','snika-retro-blanc','Rétro Court Blanc','Retro Court White',
+  ('sneakers','men','gca-retro-blanc','Rétro Court Blanc','Retro Court White',
    'Le classique blanc en cuir, style rétro et finitions soignées.','The white leather classic with a retro vibe and clean finishes.',
    'sneakers','{daily}','white','leather', 55000, null, true, '{40,41,42,43,44}'),
-  ('sport','men','snika-run-pro-bleu','Run Pro Bleu','Run Pro Blue',
+  ('sport','men','gca-run-pro-bleu','Run Pro Bleu','Run Pro Blue',
    'Chaussure de running respirante avec bon maintien.','Breathable running shoe with great support.',
    'sport','{sport}','blue','mesh', 62000, null, false, '{40,41,42,43,44,45,46}'),
-  ('ville-habille','men','snika-derby-cognac','Derby Cognac','Cognac Derby',
+  ('ville-habille','men','gca-derby-cognac','Derby Cognac','Cognac Derby',
    'Derby en cuir véritable pour le bureau et les cérémonies.','Genuine leather derby for the office and ceremonies.',
    'formal','{work,ceremony}','brown','leather', 85000, 72000, true, '{40,41,42,43,44}'),
-  ('bottes','men','snika-trek-boot','Trek Boot','Trek Boot',
+  ('bottes','men','gca-trek-boot','Trek Boot','Trek Boot',
    'Bottine robuste à crampons pour la randonnée.','Rugged lugged boot made for hiking.',
    'boots','{hiking,daily}','brown','suede', 98000, null, false, '{41,42,43,44,45}'),
-  ('sneakers','women','snika-cloud-rose','Cloud Rose','Cloud Pink',
+  ('sneakers','women','gca-cloud-rose','Cloud Rose','Cloud Pink',
    'Sneaker plateforme ultra-confortable, coloris rose poudré.','Ultra-comfy platform sneaker in powder pink.',
    'sneakers','{daily}','pink','synthetic', 42000, 35000, true, '{36,37,38,39,40,41}'),
-  ('ville-habille','women','snika-escarpin-nuit','Escarpin Nuit','Midnight Pump',
+  ('ville-habille','women','gca-escarpin-nuit','Escarpin Nuit','Midnight Pump',
    'Escarpin bleu nuit, talon 7 cm, élégant pour toutes les occasions.','Midnight blue pump with a 7 cm heel, elegant for any occasion.',
    'formal','{ceremony,work}','blue','suede', 68000, null, true, '{36,37,38,39,40}'),
-  ('sandales','women','snika-sandale-sun','Sandale Sun','Sun Sandal',
+  ('sandales','women','gca-sandale-sun','Sandale Sun','Sun Sandal',
    'Sandale à brides dorée, légère pour l''été.','Light golden strappy sandal for summer.',
    'sandals','{daily,ceremony}','yellow','leather', 28000, null, false, '{36,37,38,39,40,41}'),
-  ('sport','women','snika-fit-flow','Fit Flow','Fit Flow',
+  ('sport','women','gca-fit-flow','Fit Flow','Fit Flow',
    'Chaussure de training souple pour la salle et la course.','Flexible training shoe for the gym and running.',
    'sport','{sport,daily}','white','mesh', 58000, 49000, false, '{36,37,38,39,40}'),
-  ('ecole','kids','snika-kids-school','School Kid Noir','School Kid Black',
+  ('ecole','kids','gca-kids-school','School Kid Noir','School Kid Black',
    'Chaussure d''école solide à scratch, facile à enfiler.','Sturdy school shoe with hook-and-loop strap, easy on.',
    'school','{daily}','black','leather', 22000, null, true, '{28,29,30,31,32,33,34,35}'),
-  ('sneakers','kids','snika-kids-light','Kids Light Multi','Kids Light Multi',
+  ('sneakers','kids','gca-kids-light','Kids Light Multi','Kids Light Multi',
    'Basket colorée et légère pour jouer toute la journée.','Colourful, lightweight sneaker to play all day.',
    'sneakers','{daily,sport}','multi','synthetic', 25000, 19000, true, '{24,25,26,27,28,29,30}'),
-  ('sandales','kids','snika-kids-splash','Kids Splash','Kids Splash',
+  ('sandales','kids','gca-kids-splash','Kids Splash','Kids Splash',
    'Sandale enfant résistante à l''eau, semelle antidérapante.','Water-friendly kids sandal with a non-slip sole.',
    'sandals','{daily}','blue','rubber', 15000, null, false, '{22,23,24,25,26,27,28}')
 ), ins as (
@@ -90,4 +90,4 @@ from ins join data d on d.slug = ins.slug, unnest(d.sizes::text[]) s;
 
 -- Activation (le trigger vérifie la présence des 4 photos)
 update public.products set is_active = true
-where slug like 'snika-%' and not is_active;
+where slug like 'gca-%' and not is_active;

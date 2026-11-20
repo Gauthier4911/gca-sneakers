@@ -1,5 +1,5 @@
 -- =============================================================================
--- Snika — 001 : schéma (ENUM, tables, contraintes, index)
+-- GCA sneakers — 001 : schéma (ENUM, tables, contraintes, index)
 -- =============================================================================
 -- Monnaie : FCFA (pas de centimes) → numeric(12,0).
 -- Pointures : saisies librement par l'admin pour chaque produit (EU, ex. 42 ou 42.5).
@@ -91,7 +91,7 @@ create sequence public.order_number_seq;
 create table public.orders (
   id                uuid primary key default gen_random_uuid(),
   order_number      text not null unique
-                    default ('SN-' || to_char(now(), 'YYYY') || '-' || lpad(nextval('public.order_number_seq')::text, 6, '0')),
+                    default ('GCA-' || to_char(now(), 'YYYY') || '-' || lpad(nextval('public.order_number_seq')::text, 6, '0')),
   user_id           uuid references public.profiles (id) on delete set null,
   status            public.order_status not null default 'pending',
   fulfillment       public.fulfillment_type not null,
