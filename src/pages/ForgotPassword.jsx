@@ -28,8 +28,10 @@ export default function ForgotPassword() {
   const onSubmit = async ({ email }) => {
     setFormError(null);
     const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}${to('reset')}` });
-    // Seule la limite anti-abus est signalée ; sinon toujours le même message
+    // On signale la limite anti-abus et les pannes d'envoi (ex. service d'email non
+    // configuré) ; sinon toujours le même message, que le compte existe ou non.
     if (error && authErrorKey(error) === 'auth.errors.rateLimit') { setFormError('auth.errors.rateLimit'); return; }
+    if (error && (error.status ?? 500) >= 500) { setFormError('auth.errors.generic'); return; }
     setSent(true);
   };
 
