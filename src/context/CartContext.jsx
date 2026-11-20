@@ -1,6 +1,8 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { computeTotals, lineKey } from '../lib/cart';
 import { useSettings } from './SettingsContext';
+import { useAuth } from './AuthContext';
+import { supabase } from '../lib/supabase';
 
 const STORAGE_KEY = 'gca-cart-v1';
 const MAX_QTY_PER_LINE = 20;
@@ -20,7 +22,8 @@ function readStorage() {
 
 /**
  * Panier sans compte (localStorage). Ne contient que des infos produit, jamais
- * de données personnelles. La synchronisation avec le compte arrive à l'étape 6.
+ * de données personnelles. Une fois connecté, il est aussi enregistré sur le
+ * compte (table carts) pour être retrouvé sur un autre appareil.
  */
 export function CartProvider({ children }) {
   const { settings } = useSettings();
@@ -30,6 +33,41 @@ export function CartProvider({ children }) {
   useEffect(() => {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); } catch { /* quota / mode privé */ }
   }, [items]);
+
+  // ---- Synchronisation avec le compte (table carts, protégée par RLS) ----
+  const { user } = useAuth();
+  const syncedFor = useRef(null);
+  useEffect(() => {
+    if (!user) {
+      // Déconnexion : on vide le panier local (appareil partagé)
+      if (syncedFor.current) { setItems([]); syncedFor.current = null; }
+      return;
+    }
+    if (syncedFor.current === user.id) return;
+    (async () => {
+      const { data } = await supabase.from('carts').select('items').eq('user_id', user.id).maybeSingle();
+      const remote = Array.isArray(data?.items) ? data.items : [];
+      setItems((local) => {
+        // Fusion : pour une même pointure on garde la plus grande quantité (pas de doublon)
+        const map = new Map(remote.map((i) => [lineKey(i.productId, i.size), i]));
+        local.forEach((i) => {
+          const k = lineKey(i.productId, i.size);
+          const r = map.get(k);
+          map.set(k, r ? { ...r, ...i, quantity: Math.max(r.quantity, i.quantity) } : i);
+        });
+        return [...map.values()].slice(0, 50);
+      });
+      syncedFor.current = user.id;
+    })();
+  }, [user]);
+
+  useEffect(() => {
+    if (!user || syncedFor.current !== user.id) return undefined;
+    const id = setTimeout(() => {
+      supabase.from('carts').upsert({ user_id: user.id, items }).then(() => {});
+    }, 600);
+    return () => clearTimeout(id);
+  }, [items, user]);
 
   const addItem = useCallback((item, qty = 1) => {
     setItems((prev) => {

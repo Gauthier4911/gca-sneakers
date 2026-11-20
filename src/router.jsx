@@ -16,6 +16,9 @@ const Finder = lazy(() => import('./pages/Finder'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const Account = lazy(() => import('./pages/Account'));
+const Cart = lazy(() => import('./pages/Cart'));
+const Checkout = lazy(() => import('./pages/Checkout'));
+const Confirmation = lazy(() => import('./pages/Confirmation'));
 
 // Pages des étapes suivantes : remplacées au fur et à mesure.
 const PAGES = {
@@ -23,9 +26,9 @@ const PAGES = {
   category: <Shop />,
   product: <Product />,
   finder: <Finder />,
-  cart: <ComingSoon titleKey="pages.cart" />,
-  checkout: <ComingSoon titleKey="pages.checkout" />,
-  confirmation: <ComingSoon titleKey="pages.confirmation" />,
+  cart: <Cart />,
+  checkout: <ProtectedRoute reason="checkout"><Checkout /></ProtectedRoute>,
+  confirmation: <ProtectedRoute><Confirmation /></ProtectedRoute>,
   login: <Login />,
   register: <Register />,
   account: <ProtectedRoute><Account /></ProtectedRoute>,
