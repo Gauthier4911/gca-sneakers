@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import LangLayout from './components/layout/LangLayout';
 import PageLoader from './components/ui/PageLoader';
 import ProtectedRoute from './components/guards/ProtectedRoute';
+import AdminRoute from './components/guards/AdminRoute';
 import { detectLang } from './lib/i18n';
 import { LANGS, ROUTES } from './lib/routes';
 
@@ -19,6 +20,14 @@ const Account = lazy(() => import('./pages/Account'));
 const Cart = lazy(() => import('./pages/Cart'));
 const Checkout = lazy(() => import('./pages/Checkout'));
 const Confirmation = lazy(() => import('./pages/Confirmation'));
+// Espace admin : chargé uniquement pour les admins (fichiers JS séparés)
+const AdminLayout = lazy(() => import('./admin/AdminLayout'));
+const AdminDashboard = lazy(() => import('./admin/Dashboard'));
+const AdminProducts = lazy(() => import('./admin/Products'));
+const AdminProductForm = lazy(() => import('./admin/ProductForm'));
+const AdminCategories = lazy(() => import('./admin/Categories'));
+const AdminOrders = lazy(() => import('./admin/Orders'));
+const AdminSettings = lazy(() => import('./admin/Settings'));
 
 // Pages des étapes suivantes : remplacées au fur et à mesure.
 const PAGES = {
@@ -41,6 +50,16 @@ export default function AppRoutes() {
     <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route path="/" element={<Navigate to={`/${detectLang()}`} replace />} />
+        <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="commandes" element={<AdminOrders />} />
+          <Route path="produits" element={<AdminProducts />} />
+          <Route path="produits/nouveau" element={<AdminProductForm />} />
+          <Route path="produits/:id" element={<AdminProductForm />} />
+          <Route path="categories" element={<AdminCategories />} />
+          <Route path="parametres" element={<AdminSettings />} />
+          <Route path="*" element={<Navigate to="/admin" replace />} />
+        </Route>
         <Route path="/:lang" element={<LangLayout />}>
           <Route index element={<Home />} />
           {/* Les chemins FR et EN sont tous déclarés : /fr/boutique et /en/shop */}
