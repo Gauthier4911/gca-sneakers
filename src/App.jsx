@@ -6,6 +6,9 @@ import { AuthProvider } from './context/AuthContext';
 import { SettingsProvider } from './context/SettingsContext';
 import { CartProvider } from './context/CartContext';
 import AppRoutes from './router';
+import SmoothScroll from './components/motion/SmoothScroll';
+import Intro from './components/motion/Intro';
+import FlyToCart from './components/motion/FlyToCart';
 
 export default function App() {
   return (
@@ -16,7 +19,10 @@ export default function App() {
           <SettingsProvider>
             <AuthProvider>
               <CartProvider>
+                <SmoothScroll />
+                <Intro />
                 <AppRoutes />
+                <FlyToCart />
                 <Toaster position="top-center" richColors closeButton
                   toastOptions={{ classNames: { toast: 'font-sans rounded-2xl' } }} />
               </CartProvider>

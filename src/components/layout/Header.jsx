@@ -70,9 +70,12 @@ export default function Header() {
             className="grid h-10 w-10 place-items-center rounded-full text-forest transition hover:bg-forest/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold">
             <User className="h-5 w-5" aria-hidden />
           </Link>
-          <Link to={to('cart')} aria-label={t('cart.open', { count })}
+          <Link to={to('cart')} aria-label={t('cart.open', { count })} id="cart-icon"
             className="relative grid h-10 w-10 place-items-center rounded-full text-forest transition hover:bg-forest/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold">
-            <ShoppingBag className="h-5 w-5" aria-hidden />
+            <motion.span key={`bag-${count}`} initial={count ? { rotate: -18, scale: 1.3 } : false} animate={{ rotate: 0, scale: 1 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 10, delay: 0.75 }} className="grid place-items-center">
+              <ShoppingBag className="h-5 w-5" aria-hidden />
+            </motion.span>
             <AnimatePresence>
               {count > 0 && (
                 <motion.span key={count} initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}

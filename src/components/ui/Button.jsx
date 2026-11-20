@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const VARIANTS = {
   // Dégradé signature : texte vert forêt (contraste 7:1)
-  primary: 'bg-signature text-forest shadow-glow hover:brightness-105',
+  primary: 'btn-shine bg-signature text-forest shadow-glow hover:brightness-105',
   secondary: 'bg-emerald text-white hover:bg-emerald-800',
   outline: 'border-2 border-current text-forest hover:bg-forest hover:text-white',
   ghostLight: 'border-2 border-white/70 text-white hover:bg-white hover:text-forest',

@@ -7,6 +7,7 @@ import {
   Shirt, Star, Sun, Trophy, Truck, User, UserRound,
 } from 'lucide-react';
 import Reveal from '../ui/Reveal';
+import SplitText from '../motion/SplitText';
 import Button from '../ui/Button';
 import { SocialLinks } from '../layout/Footer';
 import { useLang } from '../../hooks/useLang';
@@ -17,9 +18,12 @@ import { useCatalog } from '../../hooks/useCatalog';
 
 export function SectionTitle({ title, subtitle, light = false }) {
   return (
-    <Reveal className="mb-10 text-center">
-      <h2 className={`font-display text-3xl font-bold tracking-tight md:text-4xl ${light ? 'text-white' : 'text-forest'}`}>{title}</h2>
-      <span aria-hidden className="mx-auto mt-3 block h-1.5 w-16 rounded-full bg-signature" />
+    <Reveal className="mb-10 text-center" y={0}>
+      <h2 className={`font-display text-3xl font-bold tracking-tight md:text-5xl ${light ? 'text-white' : 'text-forest'}`}>
+        <SplitText text={title} inView stagger={0.05} />
+      </h2>
+      <motion.span aria-hidden className="mx-auto mt-4 block h-1.5 w-20 origin-left rounded-full bg-signature"
+        initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }} />
       {subtitle && <p className={`mt-4 ${light ? 'text-white/80' : 'text-ink-soft'}`}>{subtitle}</p>}
     </Reveal>
   );

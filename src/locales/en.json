@@ -134,6 +134,36 @@
           "text": "Got 5 pairs for the whole family with the discount, thanks GCA!"
         }
       ]
+    },
+    "marquee": [
+      "Sneakers",
+      "Sport",
+      "City",
+      "School",
+      "Fast delivery",
+      "Free pickup",
+      "-10% from 5 pairs",
+      "WhatsApp payment"
+    ],
+    "showcase": {
+      "eyebrow": "Signature piece",
+      "title": "Every detail matters.",
+      "scroll": "Scroll to spin the pair",
+      "steps": [
+        {
+          "title": "Total comfort",
+          "text": "A sole that cushions every step, from morning to night."
+        },
+        {
+          "title": "Style that stands out",
+          "text": "Colours and materials picked to make a difference."
+        },
+        {
+          "title": "At your door, fast",
+          "text": "Fast delivery or free warehouse pickup, easy payment on WhatsApp."
+        }
+      ],
+      "cta": "Discover this pair"
     }
   },
   "footer": {
@@ -142,7 +172,8 @@
     "help": "Help",
     "follow": "Follow us",
     "rights": "© {{year}} GCA sneakers. All rights reserved.",
-    "payment": "Payment completed on WhatsApp with our team."
+    "payment": "Payment completed on WhatsApp with our team.",
+    "big": "GCA SNEAKERS"
   },
   "social": {
     "tiktok": "TikTok",

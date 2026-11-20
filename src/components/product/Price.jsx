@@ -11,11 +11,11 @@ export default function Price({ price, promoPrice, size = 'sm', dark = false }) 
   const hasPromo = promoPrice != null && Number(promoPrice) < Number(price);
   return (
     <p className="flex flex-wrap items-baseline gap-x-2">
-      <span className={`font-display font-bold ${big ? 'text-3xl' : 'text-lg'} ${hasPromo ? 'text-amber' : dark ? 'text-white' : 'text-forest'}`}>
+      <span className={`font-display font-bold ${big ? 'text-3xl' : 'text-lg'} ${hasPromo ? (dark ? 'text-gold' : 'text-amber') : dark ? 'text-white' : 'text-forest'}`}>
         {fmt(hasPromo ? promoPrice : price)}
       </span>
       {hasPromo && (
-        <span className={`text-ink-soft line-through ${big ? 'text-lg' : 'text-sm'}`}>
+        <span className={`line-through ${dark ? 'text-white/60' : 'text-ink-soft'} ${big ? 'text-lg' : 'text-sm'}`}>
           <span className="sr-only">{t('product.oldPrice', { price: fmt(price) })}</span>
           <span aria-hidden>{fmt(price)}</span>
         </span>

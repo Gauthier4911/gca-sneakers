@@ -8,7 +8,7 @@ export default function ProductGrid({ products, loading, skeletons = 8, classNam
         ? Array.from({ length: skeletons }, (_, i) => <ProductCardSkeleton key={i} />)
         : (
           <AnimatePresence mode="popLayout">
-            {products.map((p, i) => <ProductCard key={p.id} product={p} priority={i < 4} />)}
+            {products.map((p, i) => <ProductCard key={p.id} product={p} priority={i < 4} index={i} />)}
           </AnimatePresence>
         )}
     </div>

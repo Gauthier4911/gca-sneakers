@@ -14,6 +14,8 @@ import QuantityStepper from '../components/ui/QuantityStepper';
 import Reveal from '../components/ui/Reveal';
 import PageLoader from '../components/ui/PageLoader';
 import NotFound from './NotFound';
+import SplitText from '../components/motion/SplitText';
+import { flyToCart } from '../components/motion/FlyToCart';
 import { useLang } from '../hooks/useLang';
 import { useLiveStock } from '../hooks/useLiveStock';
 import { useCatalog } from '../hooks/useCatalog';
@@ -77,6 +79,7 @@ export default function Product() {
       productId: product.id, slug: product.slug, name_fr: product.name_fr, name_en: product.name_en,
       image: product.images[0]?.url, size, unitPrice: effectivePrice(product), maxStock: selected.stock,
     }, qty);
+    flyToCart(document.querySelector('[data-gallery-main]') || document.querySelector('[role=slider] img:not([aria-hidden=true])'));
     setAdded(true); setTimeout(() => setAdded(false), 1800);
     toast.success(t('product.addedToast', { name, size }), {
       action: { label: t('product.viewCart'), onClick: () => navigate(to('cart')) },
@@ -126,7 +129,7 @@ export default function Product() {
           <p className="text-sm font-semibold uppercase tracking-wider text-emerald">
             {t(`enums.gender.${product.gender}`)} · {t(`enums.shoeType.${product.shoe_type}`)}
           </p>
-          <h1 className="mt-2 font-display text-4xl font-bold leading-tight text-forest md:text-5xl">{name}</h1>
+          <h1 className="mt-2 font-display text-4xl font-bold leading-tight text-forest md:text-5xl"><SplitText text={name} delay={0.2} /></h1>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <Price price={product.price} promoPrice={product.promo_price} size="lg" />
             {pct > 0 && <span className="rounded-full bg-signature px-3 py-1 text-sm font-bold text-forest">{t('product.promo', { percent: pct })}</span>}

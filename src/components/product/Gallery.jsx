@@ -39,7 +39,7 @@ export default function Gallery({ images, name, model3d }) {
         {mode === 'photos' && (
           <>
             <AnimatePresence initial={false} custom={dir}>
-              <motion.img key={current.url} src={current.url} alt={altOf(index)} width="800" height="800"
+              <motion.img key={current.url} data-gallery-main src={current.url} alt={altOf(index)} width="800" height="800"
                 custom={dir} draggable="false"
                 initial={(d) => ({ x: d > 0 ? '60%' : d < 0 ? '-60%' : 0, opacity: 0 })}
                 animate={{ x: 0, opacity: 1 }}

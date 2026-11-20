@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import Seo from '../components/seo/Seo';
 import Hero from '../components/home/Hero';
+import ShoeShowcase from '../components/home/ShoeShowcase';
 import { Arguments, CategoryGrid, FeaturedProducts, GenderCards, PromoBanner, StoreTeaser, Testimonials } from '../components/home/Sections';
 
 const SITE = (import.meta.env.VITE_SITE_URL || '').replace(/\/$/, '');
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <GenderCards />
       <FeaturedProducts />
+      <ShoeShowcase />
       <CategoryGrid />
       <PromoBanner />
       <Arguments />

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Logo from '../ui/Logo';
+import Marquee from '../motion/Marquee';
 import { FacebookIcon, InstagramIcon, TikTokIcon, WhatsAppIcon } from '../ui/SocialIcons';
 import { useLang } from '../../hooks/useLang';
 import { useSettings } from '../../context/SettingsContext';
@@ -50,6 +51,9 @@ export default function Footer() {
   return (
     <footer className="relative mt-24 overflow-hidden bg-forest text-white">
       <div aria-hidden className="h-1.5 w-full bg-signature" />
+      {/* Grand nom de marque qui défile en contour */}
+      <Marquee items={[t('footer.big'), t('brand.tagline')]} speed={40} reverse className="border-b border-white/10 py-6"
+        itemClassName="text-outline font-display text-5xl font-bold uppercase md:text-8xl" />
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4 md:px-6">
         <div className="md:col-span-2">
           <Logo variant="light" animate={false} className="h-14 w-auto" />

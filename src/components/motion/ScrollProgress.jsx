@@ -1,0 +1,8 @@
+import { motion, useScroll, useSpring } from 'framer-motion';
+
+/** Fine barre dégradée en haut de l'écran qui suit la progression de lecture. */
+export default function ScrollProgress() {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });
+  return <motion.div aria-hidden className="fixed inset-x-0 top-0 z-[60] h-1 origin-left bg-signature" style={{ scaleX }} />;
+}

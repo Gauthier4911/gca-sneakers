@@ -10,6 +10,7 @@ import ProductGrid from '../components/product/ProductGrid';
 import Button from '../components/ui/Button';
 import NotFound from './NotFound';
 import FinderBanner from '../components/finder/FinderBanner';
+import SplitText from '../components/motion/SplitText';
 import { useCatalog } from '../hooks/useCatalog';
 import { useFilters } from '../hooks/useFilters';
 import { useLang } from '../hooks/useLang';
@@ -76,7 +77,7 @@ export default function Shop() {
 
       <header className="mt-4 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-4xl font-bold text-forest md:text-5xl">{title}</h1>
+          <h1 className="font-display text-4xl font-bold text-forest md:text-6xl"><SplitText key={title} text={title} /></h1>
           <p className="mt-2 text-ink-soft" aria-live="polite">{loading ? t('common.loading') : t('shop.results', { count: results.length })}</p>
         </div>
         <div className="flex items-center gap-2">

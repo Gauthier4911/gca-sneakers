@@ -134,6 +134,36 @@
           "text": "J'ai pris 5 paires pour toute la famille avec la remise, merci GCA !"
         }
       ]
+    },
+    "marquee": [
+      "Sneakers",
+      "Sport",
+      "Ville",
+      "École",
+      "Livraison rapide",
+      "Retrait gratuit",
+      "-10 % dès 5 paires",
+      "Paiement WhatsApp"
+    ],
+    "showcase": {
+      "eyebrow": "Pièce maîtresse",
+      "title": "Chaque détail compte.",
+      "scroll": "Fais défiler pour tourner la paire",
+      "steps": [
+        {
+          "title": "Confort absolu",
+          "text": "Une semelle qui amortit chaque pas, du matin au soir."
+        },
+        {
+          "title": "Style qui se remarque",
+          "text": "Des coloris et des matières choisis pour faire la différence."
+        },
+        {
+          "title": "Chez toi, vite",
+          "text": "Livraison rapide ou retrait gratuit à l'entrepôt, paiement simple sur WhatsApp."
+        }
+      ],
+      "cta": "Découvrir cette paire"
     }
   },
   "footer": {
@@ -142,7 +172,8 @@
     "help": "Aide",
     "follow": "Suis-nous",
     "rights": "© {{year}} GCA sneakers. Tous droits réservés.",
-    "payment": "Paiement finalisé sur WhatsApp avec notre équipe."
+    "payment": "Paiement finalisé sur WhatsApp avec notre équipe.",
+    "big": "GCA SNEAKERS"
   },
   "social": {
     "tiktok": "TikTok",
