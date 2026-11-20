@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/postbuild.mjs",
     "preview": "vite preview",
-    "logo": "node scripts/build-logo.mjs public/logo"
+    "logo": "node scripts/build-logo.mjs public/logo",
+    "demo-images": "node scripts/generate-demo-images.mjs"
   },
   "dependencies": {
     "@google/model-viewer": "^3.5.0",

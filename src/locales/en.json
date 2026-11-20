@@ -741,7 +741,12 @@
         "facebook": "Facebook link",
         "instagram": "Instagram link",
         "whatsapp": "WhatsApp link (optional)",
-        "httpsHint": "Must start with https://"
+        "httpsHint": "Must start with https://",
+        "opening_hours": "Opening hours",
+        "hoursHint": "E.g. Mon–Sat 9am–7pm",
+        "store_photos": "Warehouse photos (6 max)",
+        "addPhoto": "Add a photo",
+        "removePhoto": "Remove photo {{n}}"
       },
       "errors": {
         "whatsapp": "Invalid number: 8 to 15 digits.",
@@ -749,6 +754,45 @@
         "number": "Invalid number.",
         "percent": "Between 0 and 90."
       }
+    }
+  },
+  "store": {
+    "seoTitle": "Our store and warehouse — GCA sneakers",
+    "seoDescription": "Discover GCA sneakers on video: our store, our warehouse, our social media. Free pickup at the warehouse.",
+    "eyebrow": "Our store",
+    "title": "Welcome to GCA sneakers",
+    "subtitle": "Thousands of pairs carefully stored, ready to ship to you or to be picked up for free at our warehouse.",
+    "video": "Our store on video",
+    "play": "Play the video",
+    "videoSoon": "Our presentation video is coming soon. Follow us on social media in the meantime!",
+    "warehouse": "Our warehouse",
+    "address": "Address",
+    "hours": "Opening hours",
+    "directions": "Directions",
+    "photos": "Warehouse photos",
+    "photo": "Warehouse photo {{n}}",
+    "pickupTitle": "Free pickup",
+    "pickupText": "Choose “Warehouse pickup” when you order: it's free.",
+    "follow": "Follow us",
+    "followText": "New arrivals, behind the scenes and early deals."
+  },
+  "contact": {
+    "seoTitle": "Contact — GCA sneakers",
+    "seoDescription": "A question about a pair, a size or your order? Message us on WhatsApp.",
+    "title": "Contact us",
+    "subtitle": "A question about a size, a pair or your order? We reply fast on WhatsApp.",
+    "whatsapp": "Message us on WhatsApp",
+    "email": "Send an email",
+    "formTitle": "Send us a message",
+    "name": "Your name",
+    "message": "Your message",
+    "send": "Send on WhatsApp",
+    "sendHint": "Your message will open in WhatsApp, ready to send.",
+    "greeting": "Hello GCA sneakers, I'm {{name}}.",
+    "errors": {
+      "name": "Please enter your name.",
+      "message": "Write a message (at least 10 characters).",
+      "tooLong": "Message too long."
     }
   }
 }

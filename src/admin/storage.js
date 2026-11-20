@@ -43,3 +43,14 @@ export async function removeByUrl(url) {
   const m = /\/storage\/v1\/object\/public\/(product-images|product-models|site-media)\/(.+)$/.exec(url || '');
   if (m) await supabase.storage.from(m[1]).remove([decodeURIComponent(m[2])]);
 }
+
+/** Photos de la boutique / de l'entrepôt (bucket site-media). */
+export async function uploadSiteImage(file) {
+  if (!IMAGE_TYPES.includes(file.type)) throw new Error('badType');
+  if (file.size > IMAGE_MAX) throw new Error('tooBig');
+  const blob = await toWebp(file, 1600);
+  const path = `store/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.webp`;
+  const { error } = await supabase.storage.from('site-media').upload(path, blob, { contentType: 'image/webp', cacheControl: '31536000' });
+  if (error) throw error;
+  return publicUrl('site-media', path);
+}

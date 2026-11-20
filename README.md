@@ -1,35 +1,50 @@
 # GCA sneakers 👟
 
-Boutique en ligne de chaussures (Homme, Femme, Enfant). Stack : React (Vite) + Tailwind + Framer Motion + i18next, avec Supabase pour la base, l'authentification et le stockage. Le paiement se finalise sur WhatsApp.
+Boutique en ligne de chaussures (Homme, Femme, Enfant) : catalogue, questionnaire « Trouvez votre paire », panier avec promo, commande finalisée sur **WhatsApp**, espace admin complet. Site bilingue **FR / EN**.
 
-> État : **étape 3/10 terminée** (base de données, logo, structure, accueil, boutique avec filtres, fiche produit).
+**Stack** : React 18 (Vite) · Tailwind CSS · Framer Motion · React Router · i18next · react-helmet-async · zod · Supabase (Auth, Postgres, Storage, Realtime, RLS) · hébergement Vercel.
 
-## Lancer le site en local
+---
+
+## 1. Lancer le site en local
 
 ```bash
 npm install
-cp .env.example .env   # puis remplir l'URL et la clé publique Supabase
-npm run dev            # http://localhost:5173
+cp .env.example .env      # puis remplir les 3 variables (voir §3)
+npm run dev               # http://localhost:5173
 ```
 
-`npm run build` produit la version de production dans `dist/` (c'est ce que Vercel exécute).
+| Commande | Rôle |
+|---|---|
+| `npm run dev` | Serveur de développement |
+| `npm run build` | Build de production (`dist/`) + pages SEO pré-générées + `sitemap.xml` + `robots.txt` |
+| `npm run preview` | Tester le build localement |
+| `npm run logo` | Régénérer les fichiers du logo |
+| `npm run demo-images` | Régénérer les illustrations de démo |
 
-## 1. Créer le projet Supabase (gratuit)
+## 2. Configurer Supabase
 
-1. Créer un compte sur https://supabase.com, puis **New project** (région la plus proche : `eu-west`/Paris pour l'Afrique de l'Ouest).
-2. Ouvrir **SQL Editor** et exécuter, **dans l'ordre**, le contenu de :
-   1. `supabase/migrations/001_schema.sql`
-   2. `supabase/migrations/002_functions.sql`
-   3. `supabase/migrations/003_rls.sql`
-   4. `supabase/migrations/004_storage.sql`
-   5. `supabase/seed.sql` (données de démo, facultatif)
+1. Créer un projet sur https://supabase.com (région conseillée : `eu-west-3` Paris).
+2. **SQL Editor** → exécuter dans l'ordre :
+   `supabase/migrations/001_schema.sql` → `002_functions.sql` → `003_rls.sql` → `004_storage.sql` → `005_realtime_alt.sql`, puis `supabase/seed.sql` (données de démo, facultatif).
 3. **Désactiver la confirmation email** : *Authentication → Sign In / Providers → Email* → décocher **Confirm email**.
-4. Récupérer l'URL et la clé **anon / publishable** dans *Project Settings → API* (pour le `.env` de l'étape 2).
-   ⚠️ Ne jamais mettre la clé `service_role` dans le front.
+4. **Limites anti-abus** (recommandé) : *Authentication → Rate Limits* (laisser les valeurs par défaut ou les baisser).
+5. *Project Settings → API Keys* : copier l'**URL** et la clé **publishable / anon** dans `.env`.
+   ⚠️ **Jamais** la clé `service_role` / `secret` dans le site.
 
-## 2. Passer un utilisateur en admin (manuellement)
+> Le projet de production existe déjà : `gca-sneakers` (organisation Sourcia, région Paris).
 
-Le site ne permet **jamais** de devenir admin. Après l'inscription de la personne sur le site, dans le **SQL Editor** :
+## 3. Variables d'environnement
+
+| Variable | Exemple | Rôle |
+|---|---|---|
+| `VITE_SUPABASE_URL` | `https://xxxx.supabase.co` | URL du projet Supabase |
+| `VITE_SUPABASE_ANON_KEY` | `sb_publishable_…` | Clé **publique** (protégée par la RLS) |
+| `VITE_SITE_URL` | `https://gca-sneakers.vercel.app` | Adresse publique du site (sitemap, partage, canonical) |
+
+## 4. Passer un utilisateur en admin (manuellement)
+
+Le site ne permet **jamais** de devenir admin. La personne crée d'abord un compte sur le site, puis dans le **SQL Editor** de Supabase :
 
 ```sql
 update public.profiles
@@ -37,55 +52,66 @@ set role = 'admin'
 where id = (select id from auth.users where email = 'email@exemple.com');
 ```
 
-Pour retirer les droits : même requête avec `role = 'client'`.
+Pour retirer les droits : même requête avec `role = 'client'`. L'espace admin est ensuite accessible sur **`/admin`** (lien aussi dans « Mon compte »).
 
-## 3. Ce que fait la base (résumé sécurité)
+## 5. Ce que peut faire l'admin (`/admin`)
+
+- **Tableau de bord** : chiffre d'affaires (commandes payées, expédiées ou livrées), commandes de la période, ventes par jour, meilleures ventes, stock faible, commandes par statut.
+- **Commandes** : filtres par statut, recherche, détail, bouton « Contacter sur WhatsApp », changement de statut `pending → confirmed → paid → shipped → delivered` ou `cancelled`. Le **stock est retiré automatiquement au passage en « Payée »** et remis si la commande est annulée après paiement.
+- **Produits** : création et modification, **4 photos** (converties en WebP 1200 px), modèle 3D `.glb` facultatif, pointures et stock (avec ajout d'une plage, ex. 36 → 45), prix promo, coup de cœur, visible ou masqué.
+- **Catégories** : création, modification, ordre, suppression.
+- **Paramètres** : numéro WhatsApp de la boutique, adresse de l'entrepôt, horaires, frais de livraison, devise, promo (nombre d'articles et %), lien de la vidéo (YouTube ou TikTok), photos de l'entrepôt, liens TikTok, Instagram, Facebook et WhatsApp.
+
+## 6. Parcours client
+
+1. Panier **sans compte** (enregistré dans le navigateur, puis synchronisé avec le compte à la connexion).
+2. Promo automatique : **-X % dès N articles**, avec l'indicateur « Plus que 2 articles… ».
+3. « Commander » → connexion ou inscription (le panier est conservé) → choix **livraison** (frais) ou **retrait à l'entrepôt** (gratuit) → récapitulatif.
+4. La commande est **enregistrée par le serveur**, qui **recalcule les prix**. WhatsApp s'ouvre ensuite avec le message pré-rempli (n° de commande, articles, pointures, total, mode de réception, adresse, client), puis un écran de confirmation s'affiche.
+
+## 7. Sécurité
 
 | Élément | Règle |
 |---|---|
-| RLS | Activée sur toutes les tables |
-| Catalogue | Lecture publique (produits actifs seulement), écriture admin |
-| Profils | Chacun voit et modifie le sien (nom, WhatsApp, adresse). La colonne `role` n'est pas modifiable depuis le site |
-| Commandes | Créées uniquement via `create_order()`, qui **recalcule les prix côté serveur**. Chaque client ne voit que les siennes |
-| Statuts | Changés uniquement via `admin_set_order_status()` : le stock est retiré au passage en *paid* et remis si la commande est annulée |
-| Photos | Un produit ne peut être activé qu'avec ses 4 photos |
-| Storage | Lecture publique, upload admin uniquement (jpg/png/webp 5 Mo, .glb 15 Mo, mp4 50 Mo) |
-| Anti-abus | 5 commandes en attente maximum par client et par 24 h |
+| RLS | Activée sur **toutes** les tables, admin vérifié par la fonction SQL `is_admin()` |
+| Catalogue | Lecture publique des produits actifs ; écriture admin uniquement |
+| Profils | Chacun voit et modifie le sien (nom, WhatsApp, adresse) ; la colonne `role` ne peut pas être modifiée depuis le site |
+| Commandes | Créées uniquement par `create_order()` (prix recalculés côté serveur, stock vérifié, 5 commandes en attente max par 24 h) ; chaque client ne voit que les siennes |
+| Statuts | Uniquement via `admin_set_order_status()` (transitions contrôlées, stock transactionnel) |
+| Storage | Lecture publique, envoi par l'admin uniquement ; jpg/png/webp 5 Mo, glb 15 Mo, mp4 50 Mo |
+| Navigateur | Clé publique seulement ; seul le jeton Supabase est stocké (plus le panier, sans donnée personnelle) |
+| En-têtes | CSP, X-Frame-Options DENY, HSTS, Referrer-Policy, Permissions-Policy (`vercel.json`) |
+| Formulaires | Validation zod côté client, contraintes CHECK côté base, champ piège anti-robots, messages d'erreur non révélateurs |
 
-## 4. Pointures
+## 8. SEO et performance
 
-Les pointures ne sont pas fixées à l'avance : quand tu ajoutes une chaussure, tu saisis **chaque pointure et le nombre de paires disponibles** (ex. 39 → 4 paires, 40 → 6 paires, 42.5 → 2 paires). Le questionnaire « Trouvez votre paire » ne propose que les pointures réellement en stock.
+- URLs traduites (`/fr/boutique` ↔ `/en/shop`), balises `hreflang`, canonical, Open Graph, Twitter, JSON-LD (Organization, Product, BreadcrumbList, ShoeStore).
+- `npm run build` **pré-génère une page HTML par URL** (accueil, boutique, catégories, produits, FR et EN) pour les aperçus de liens WhatsApp et Facebook, ainsi que `sitemap.xml` et `robots.txt`.
+- Code découpé par page, module 3D et vidéo chargés à la demande, images en lazy loading et WebP, polices en `display=swap`.
 
-## 5. Direction artistique
+## 9. Photos, 360° et 3D
 
-Couleurs : **vert, orange or et blanc**, avec un dégradé signature or → orange (aperçu : `docs/palette.png`).
+- **4 photos obligatoires** par chaussure. Conseil : même cadrage (profil droit, profil gauche, trois-quarts, détail), fond uni, format carré.
+- **Vue 360°** automatique : le client fait glisser la souris ou le doigt pour faire tourner la chaussure à travers ses photos.
+- **Vraie 3D (facultatif)** : un fichier `.glb` active le bouton « Voir en 3D » (rotation, zoom). Pour le créer : appli **Polycam** ou **Luma AI** (scan au téléphone), export GLB **sans compression Draco**, moins de 15 Mo.
 
-| Rôle | Nom | Hex | Usage (contraste vérifié AA) |
-|---|---|---|---|
-| Fond fort | Vert forêt | `#053B2C` | Hero, pied de page, titres. Texte blanc (12.6:1) ou or (7.3:1) dessus |
-| Primaire | Émeraude | `#047857` | Boutons secondaires, liens, logo. Texte blanc (5.5:1) |
-| Accent | Menthe vive | `#34D399` | Petits accents sur fond forêt (6.6:1) |
-| Action | Or soleil | `#FFB800` | Boutons « Ajouter au panier », badges. Texte forêt (7.3:1) |
-| Promo | Orange mangue | `#FF7A00` | Fin du dégradé signature, promos. Texte forêt (4.8:1) |
-| Texte orange | Ambre | `#B45309` | Prix promo sur fond blanc (5.0:1) |
-| Fond doux | Crème | `#FFF8E7` | Sections alternées |
-| Fond | Blanc | `#FFFFFF` | Fond principal |
+## 10. Déploiement sur Vercel (gratuit)
 
-Règle d'or : **jamais de texte or ou orange sur fond blanc** (illisible). On utilise l'ambre à la place.
+1. https://vercel.com/new → importer le dépôt GitHub `gca-sneakers` (framework détecté : **Vite**).
+2. Ajouter les 3 variables du §3 (avec `VITE_SITE_URL` = l'adresse finale).
+3. Deploy. Adresse gratuite : `https://gca-sneakers.vercel.app`.
+4. **Nom de domaine** (facultatif, ~10–15 €/an chez un registrar) : *Project → Settings → Domains*, puis mettre à jour `VITE_SITE_URL` et redéployer. Le HTTPS est automatique.
+5. Dans Supabase, *Authentication → URL Configuration* → **Site URL** = l'adresse du site.
 
-Polices : **Lexend** (titres, proche du logo) + **Inter** (texte).
+## 11. Direction artistique
 
-## 6. Logo
+| Rôle | Couleur | Hex |
+|---|---|---|
+| Fond fort | Vert forêt | `#053B2C` |
+| Primaire | Émeraude | `#047857` |
+| Accent | Menthe vive | `#34D399` |
+| Action | Or soleil → Orange mangue (dégradé signature) | `#FFB800` → `#FF7A00` |
+| Texte orange | Ambre | `#B45309` |
+| Fonds | Crème / Blanc | `#FFF8E7` / `#FFFFFF` |
 
-Fichiers dans `public/logo/` : `gca-logo.svg` (couleur, fond blanc), `gca-logo-white.svg` (fond vert ou foncé), `gca-logo-mono.svg`, `gca-icon.svg` (favicon et avatar des réseaux, sur fond vert forêt). Aperçu : `docs/logo-preview.png`. Régénération : `scripts/build-logo.mjs`.
-
-## 7. Photos et vue 3D des chaussures
-
-- **4 photos obligatoires** par chaussure : un produit ne peut pas être activé sans elles. Conseil : fond uni, même cadrage pour les 4 vues (profil droit, profil gauche, trois-quarts, détail), format carré, 1200×1200 px, en WebP ou JPG.
-- **Vue 360°** : automatique pour toutes les chaussures. Le client fait glisser la souris ou le doigt pour faire tourner la chaussure à travers ses 4 photos.
-- **Vraie 3D (facultatif)** : si tu ajoutes un fichier `.glb` (champ `model_3d_url`), le bouton « Voir en 3D » apparaît. Le client peut alors tourner la chaussure dans tous les sens et zoomer. Pour créer un `.glb` gratuitement : appli **Polycam** ou **Luma AI** sur téléphone (scan en tournant autour de la chaussure), puis export en GLB **sans compression Draco**, moins de 15 Mo.
-- Les illustrations de démo sont dans `public/demo` (générées par `scripts/generate-demo-images.mjs`) : remplace-les par tes vraies photos depuis l'admin (étape 7).
-
-## 8. Stock en temps réel
-
-La fiche produit est abonnée aux changements de stock (Supabase Realtime) : si une pointure est vendue pendant qu'un client regarde, elle se met à jour instantanément.
+Polices : **Lexend** (titres) et **Inter** (texte). Logo : `public/logo/` (couleur, blanc, mono, icône). Règle : jamais de texte or ou orange sur fond blanc (illisible) ; on utilise l'ambre à la place.

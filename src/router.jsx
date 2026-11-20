@@ -10,7 +10,6 @@ import { LANGS, ROUTES } from './lib/routes';
 // Code splitting : chaque page est un fichier JS séparé, chargé à la demande.
 const Home = lazy(() => import('./pages/Home'));
 const NotFound = lazy(() => import('./pages/NotFound'));
-const ComingSoon = lazy(() => import('./pages/ComingSoon'));
 const Shop = lazy(() => import('./pages/Shop'));
 const Product = lazy(() => import('./pages/Product'));
 const Finder = lazy(() => import('./pages/Finder'));
@@ -20,6 +19,8 @@ const Account = lazy(() => import('./pages/Account'));
 const Cart = lazy(() => import('./pages/Cart'));
 const Checkout = lazy(() => import('./pages/Checkout'));
 const Confirmation = lazy(() => import('./pages/Confirmation'));
+const Store = lazy(() => import('./pages/Store'));
+const Contact = lazy(() => import('./pages/Contact'));
 // Espace admin : chargé uniquement pour les admins (fichiers JS séparés)
 const AdminLayout = lazy(() => import('./admin/AdminLayout'));
 const AdminDashboard = lazy(() => import('./admin/Dashboard'));
@@ -29,7 +30,6 @@ const AdminCategories = lazy(() => import('./admin/Categories'));
 const AdminOrders = lazy(() => import('./admin/Orders'));
 const AdminSettings = lazy(() => import('./admin/Settings'));
 
-// Pages des étapes suivantes : remplacées au fur et à mesure.
 const PAGES = {
   shop: <Shop />,
   category: <Shop />,
@@ -41,8 +41,8 @@ const PAGES = {
   login: <Login />,
   register: <Register />,
   account: <ProtectedRoute><Account /></ProtectedRoute>,
-  contact: <ComingSoon titleKey="pages.contact" />,
-  store: <ComingSoon titleKey="pages.store" />,
+  contact: <Contact />,
+  store: <Store />,
 };
 
 export default function AppRoutes() {

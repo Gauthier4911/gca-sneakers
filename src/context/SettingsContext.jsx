@@ -13,6 +13,8 @@ const DEFAULTS = {
   video_url: '',
   social_links: { tiktok: '', facebook: '', instagram: '', whatsapp: '' },
   contact_email: '',
+  opening_hours: '',
+  store_photos: [],
 };
 
 const SettingsContext = createContext({ settings: DEFAULTS, loading: true, reload: () => {} });

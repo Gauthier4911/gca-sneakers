@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { ImagePlus, X } from 'lucide-react';
+import { removeByUrl, uploadSiteImage } from './storage';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { Card, Field, PageTitle } from './ui';
@@ -23,7 +25,8 @@ export default function Settings() {
         store_name: s.store_name ?? '', whatsapp_number: s.whatsapp_number ?? '', contact_email: s.contact_email ?? '',
         warehouse_address: s.warehouse_address ?? '', delivery_fee: s.delivery_fee ?? 0, currency: s.currency ?? 'FCFA',
         promo_threshold: s.promo_threshold ?? 5, promo_percent: s.promo_percent ?? 0, video_url: s.video_url ?? '',
-        low_stock_threshold: s.low_stock_threshold ?? 3,
+        low_stock_threshold: s.low_stock_threshold ?? 3, opening_hours: s.opening_hours ?? '',
+        store_photos: Array.isArray(s.store_photos) ? s.store_photos : [],
         tiktok: s.social_links?.tiktok ?? '', facebook: s.social_links?.facebook ?? '', instagram: s.social_links?.instagram ?? '', whatsapp: s.social_links?.whatsapp ?? '',
       });
     });
@@ -46,6 +49,7 @@ export default function Settings() {
       ['store_name', form.store_name.trim() || 'GCA sneakers'], ['whatsapp_number', wa], ['contact_email', form.contact_email.trim()],
       ['warehouse_address', form.warehouse_address.trim()], ['delivery_fee', Number(form.delivery_fee)], ['currency', form.currency.trim() || 'FCFA'],
       ['promo_threshold', Number(form.promo_threshold)], ['promo_percent', Number(form.promo_percent)], ['video_url', form.video_url.trim()],
+      ['opening_hours', form.opening_hours.trim()], ['store_photos', form.store_photos],
       ['social_links', { tiktok: form.tiktok.trim(), facebook: form.facebook.trim(), instagram: form.instagram.trim(), whatsapp: form.whatsapp.trim() }],
     ].map(([key, value]) => ({ key, value, is_public: true }));
     rows.push({ key: 'low_stock_threshold', value: Number(form.low_stock_threshold), is_public: false });
@@ -55,6 +59,17 @@ export default function Settings() {
     await reload();
     toast.success(t('admin.settings.saved'));
   };
+
+  const addPhoto = async (file) => {
+    if (!file) return;
+    try {
+      const url = await uploadSiteImage(file);
+      setForm((f) => ({ ...f, store_photos: [...f.store_photos, url].slice(0, 6) }));
+    } catch (e) {
+      toast.error(['badType', 'tooBig'].includes(e.message) ? t(`admin.products.image.${e.message}`) : t('admin.common.error', { message: e.message }));
+    }
+  };
+  const removePhoto = (url) => { setForm((f) => ({ ...f, store_photos: f.store_photos.filter((u) => u !== url) })); removeByUrl(url); };
 
   const F = (k, props = {}) => <Field label={t(`admin.settings.fields.${k}`)} value={form[k]} onChange={set(k)} error={errors[k]} {...props} />;
 
@@ -74,6 +89,7 @@ export default function Settings() {
         <Card title={t('admin.settings.groups.delivery')}>
           <div className="space-y-4">
             {F('warehouse_address', { as: 'textarea' })}
+            {F('opening_hours', { hint: t('admin.settings.fields.hoursHint') })}
             <div className="grid gap-4 sm:grid-cols-2">{F('delivery_fee', { type: 'number', min: 0, step: 100 })}{F('currency')}</div>
           </div>
         </Card>
@@ -87,6 +103,24 @@ export default function Settings() {
         <Card title={t('admin.settings.groups.media')}>
           <div className="space-y-4">
             {F('video_url', { type: 'url', hint: t('admin.settings.fields.videoHint') })}
+            <div>
+              <p className="mb-2 text-sm font-semibold text-forest">{t('admin.settings.fields.store_photos')}</p>
+              <div className="grid grid-cols-3 gap-3">
+                {form.store_photos.map((u, i) => (
+                  <div key={u} className="relative aspect-square overflow-hidden rounded-2xl bg-cream">
+                    <img src={u} alt="" className="h-full w-full object-cover" />
+                    <button type="button" onClick={() => removePhoto(u)} aria-label={t('admin.settings.fields.removePhoto', { n: i + 1 })}
+                      className="absolute right-1 top-1 grid h-8 w-8 place-items-center rounded-full bg-white/90 text-red-700"><X className="h-4 w-4" aria-hidden /></button>
+                  </div>
+                ))}
+                {form.store_photos.length < 6 && (
+                  <label className="grid aspect-square cursor-pointer place-items-center rounded-2xl border-2 border-dashed border-forest/20 bg-cream p-2 text-center text-xs text-ink-soft hover:border-emerald">
+                    <span><ImagePlus className="mx-auto mb-1 h-6 w-6 text-emerald" aria-hidden />{t('admin.settings.fields.addPhoto')}</span>
+                    <input type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={(e) => addPhoto(e.target.files?.[0])} />
+                  </label>
+                )}
+              </div>
+            </div>
             {['tiktok', 'instagram', 'facebook', 'whatsapp'].map((k) => <div key={k}>{F(k, { type: 'url', placeholder: 'https://', hint: t('admin.settings.fields.httpsHint') })}</div>)}
           </div>
         </Card>

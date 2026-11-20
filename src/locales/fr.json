@@ -741,7 +741,12 @@
         "facebook": "Lien Facebook",
         "instagram": "Lien Instagram",
         "whatsapp": "Lien WhatsApp (facultatif)",
-        "httpsHint": "Doit commencer par https://"
+        "httpsHint": "Doit commencer par https://",
+        "opening_hours": "Horaires d'ouverture",
+        "hoursHint": "Ex. : Lun–Sam 9h–19h",
+        "store_photos": "Photos de l'entrepôt (6 max)",
+        "addPhoto": "Ajouter une photo",
+        "removePhoto": "Retirer la photo {{n}}"
       },
       "errors": {
         "whatsapp": "Numéro invalide : 8 à 15 chiffres.",
@@ -749,6 +754,45 @@
         "number": "Nombre invalide.",
         "percent": "Entre 0 et 90."
       }
+    }
+  },
+  "store": {
+    "seoTitle": "Notre boutique et notre entrepôt — GCA sneakers",
+    "seoDescription": "Découvre GCA sneakers en vidéo : notre boutique, notre entrepôt, nos réseaux sociaux. Retrait gratuit à l'entrepôt.",
+    "eyebrow": "Notre boutique",
+    "title": "Bienvenue chez GCA sneakers",
+    "subtitle": "Des milliers de paires stockées avec soin, prêtes à partir chez toi ou à être retirées gratuitement à notre entrepôt.",
+    "video": "Notre boutique en vidéo",
+    "play": "Lancer la vidéo",
+    "videoSoon": "La vidéo de présentation arrive bientôt. Suis-nous sur les réseaux en attendant !",
+    "warehouse": "Notre entrepôt",
+    "address": "Adresse",
+    "hours": "Horaires",
+    "directions": "Itinéraire",
+    "photos": "Photos de l'entrepôt",
+    "photo": "Photo de l'entrepôt {{n}}",
+    "pickupTitle": "Retrait gratuit",
+    "pickupText": "Choisis « Retrait à l'entrepôt » au moment de commander : c'est gratuit.",
+    "follow": "Suis-nous",
+    "followText": "Nouveautés, coulisses et promos en avant-première."
+  },
+  "contact": {
+    "seoTitle": "Contact — GCA sneakers",
+    "seoDescription": "Une question sur une paire, une pointure ou ta commande ? Écris-nous sur WhatsApp.",
+    "title": "Contacte-nous",
+    "subtitle": "Une question sur une pointure, une paire ou ta commande ? On te répond vite sur WhatsApp.",
+    "whatsapp": "Écrire sur WhatsApp",
+    "email": "Envoyer un email",
+    "formTitle": "Envoie-nous un message",
+    "name": "Ton nom",
+    "message": "Ton message",
+    "send": "Envoyer sur WhatsApp",
+    "sendHint": "Ton message s'ouvrira dans WhatsApp, prêt à être envoyé.",
+    "greeting": "Bonjour GCA sneakers, je suis {{name}}.",
+    "errors": {
+      "name": "Indique ton nom.",
+      "message": "Écris un message (10 caractères minimum).",
+      "tooLong": "Message trop long."
     }
   }
 }
