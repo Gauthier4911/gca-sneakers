@@ -26,7 +26,7 @@ npm run dev               # http://localhost:5173
 
 1. Créer un projet sur https://supabase.com (région conseillée : `eu-west-3` Paris).
 2. **SQL Editor** → exécuter dans l'ordre :
-   `supabase/migrations/001_schema.sql` → `002_functions.sql` → `003_rls.sql` → `004_storage.sql` → `005_realtime_alt.sql`, puis `supabase/seed.sql` (données de démo, facultatif).
+   `supabase/migrations/001_schema.sql` → `002_functions.sql` → `003_rls.sql` → `004_storage.sql` → `005_realtime_alt.sql` → `006_rls_perf.sql`, puis `supabase/seed.sql` (données de démo, facultatif).
 3. **Désactiver la confirmation email** : *Authentication → Sign In / Providers → Email* → décocher **Confirm email**.
 4. **Limites anti-abus** (recommandé) : *Authentication → Rate Limits* (laisser les valeurs par défaut ou les baisser).
 5. *Project Settings → API Keys* : copier l'**URL** et la clé **publishable / anon** dans `.env`.
