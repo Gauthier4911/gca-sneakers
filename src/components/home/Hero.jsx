@@ -100,8 +100,8 @@ export default function Hero() {
             <SplitText text={t('home.hero.title1')} delay={0.1} />{' '}
             <SplitText text={t('home.hero.title2')} delay={0.3} wordClassName="bg-signature bg-clip-text text-transparent" />
           </h1>
-          <motion.p {...fade(0.8)} className="mt-6 max-w-xl text-lg text-white/85">{t('home.hero.subtitle')}</motion.p>
-          <motion.div {...fade(1)} className="mt-9 flex flex-wrap gap-3">
+          <motion.p {...fade(0.35)} className="mt-6 max-w-xl text-lg text-white/85">{t('home.hero.subtitle')}</motion.p>
+          <motion.div {...fade(0.5)} className="mt-9 flex flex-wrap gap-3">
             <Magnetic><Button to={to('finder')} size="lg"><Sparkles className="h-5 w-5" aria-hidden />{t('home.hero.ctaFinder')}</Button></Magnetic>
             <Magnetic><Button to={to('shop')} size="lg" variant="ghostLight">{t('home.hero.ctaShop')}<ArrowRight className="h-5 w-5" aria-hidden /></Button></Magnetic>
           </motion.div>
