@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -89,14 +90,15 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Menu mobile */}
-      <AnimatePresence>
+      {/* Menu mobile : rendu directement dans <body> (portail). Sinon l'effet de flou
+          de l'en-tête (backdrop-filter) enferme le panneau dans les 64 px de l'en-tête. */}
+      {createPortal(<AnimatePresence>
         {open && (
           <>
             <motion.div className="fixed inset-0 z-40 bg-forest/60 backdrop-blur-sm lg:hidden" onClick={() => setOpen(false)}
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
             <motion.div id="mobile-menu" role="dialog" aria-modal="true" aria-label={t('nav.menu')}
-              className="fixed inset-y-0 right-0 z-50 flex w-[85%] max-w-sm flex-col bg-forest p-6 text-white lg:hidden"
+              className="fixed inset-y-0 right-0 z-50 flex h-[100dvh] w-[85%] max-w-sm flex-col overflow-y-auto bg-forest p-6 text-white shadow-2xl lg:hidden"
               initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 30, stiffness: 300 }}>
               <div className="flex items-center justify-between">
                 <Logo variant="light" animate={false} className="h-9 w-auto" />
@@ -121,7 +123,7 @@ export default function Header() {
             </motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence>, document.body)}
     </header>
   );
 }
