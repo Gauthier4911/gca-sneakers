@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import LangLayout from './components/layout/LangLayout';
 import PageLoader from './components/ui/PageLoader';
+import ProtectedRoute from './components/guards/ProtectedRoute';
 import { detectLang } from './lib/i18n';
 import { LANGS, ROUTES } from './lib/routes';
 
@@ -12,6 +13,9 @@ const ComingSoon = lazy(() => import('./pages/ComingSoon'));
 const Shop = lazy(() => import('./pages/Shop'));
 const Product = lazy(() => import('./pages/Product'));
 const Finder = lazy(() => import('./pages/Finder'));
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
+const Account = lazy(() => import('./pages/Account'));
 
 // Pages des étapes suivantes : remplacées au fur et à mesure.
 const PAGES = {
@@ -22,9 +26,9 @@ const PAGES = {
   cart: <ComingSoon titleKey="pages.cart" />,
   checkout: <ComingSoon titleKey="pages.checkout" />,
   confirmation: <ComingSoon titleKey="pages.confirmation" />,
-  login: <ComingSoon titleKey="pages.login" />,
-  register: <ComingSoon titleKey="pages.register" />,
-  account: <ComingSoon titleKey="pages.account" />,
+  login: <Login />,
+  register: <Register />,
+  account: <ProtectedRoute><Account /></ProtectedRoute>,
   contact: <ComingSoon titleKey="pages.contact" />,
   store: <ComingSoon titleKey="pages.store" />,
 };

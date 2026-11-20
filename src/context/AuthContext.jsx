@@ -1,4 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { toast } from 'sonner';
+import i18n from '../lib/i18n';
 import { supabase } from '../lib/supabase';
 
 const AuthContext = createContext(null);
@@ -12,6 +14,8 @@ export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const manualSignOut = useRef(false);
+  const hadSession = useRef(false);
 
   const loadProfile = useCallback(async (userId) => {
     if (!userId) { setProfile(null); return; }
@@ -28,10 +32,17 @@ export function AuthProvider({ children }) {
     supabase.auth.getSession().then(async ({ data }) => {
       if (!active) return;
       setSession(data.session);
+      hadSession.current = !!data.session;
       await loadProfile(data.session?.user?.id);
       setLoading(false);
     });
     const { data: sub } = supabase.auth.onAuthStateChange((event, newSession) => {
+      // Déconnexion non demandée (jeton expiré / révoqué) → on prévient le client
+      if (event === 'SIGNED_OUT' && hadSession.current && !manualSignOut.current) {
+        toast.warning(i18n.t('auth.sessionExpired'));
+      }
+      if (event === 'SIGNED_OUT') manualSignOut.current = false;
+      hadSession.current = !!newSession;
       setSession(newSession);
       // setTimeout : évite d'appeler Supabase pendant le callback (recommandation du SDK)
       setTimeout(() => loadProfile(newSession?.user?.id), 0);
@@ -47,7 +58,7 @@ export function AuthProvider({ children }) {
     isAdmin: profile?.role === 'admin',
     loading,
     refreshProfile: () => loadProfile(session?.user?.id),
-    signOut: () => supabase.auth.signOut(),
+    signOut: () => { manualSignOut.current = true; return supabase.auth.signOut(); },
   }), [session, profile, loading, loadProfile]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
