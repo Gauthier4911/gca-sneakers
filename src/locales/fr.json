@@ -1,14 +1,39 @@
 {
-  "brand": { "name": "GCA sneakers", "tagline": "Des paires qui ont du style, pour toute la famille." },
-  "nav": {
-    "home": "Accueil", "shop": "Boutique", "men": "Homme", "women": "Femme", "kids": "Enfant",
-    "finder": "Trouvez votre paire", "store": "Notre boutique", "contact": "Contact",
-    "cart": "Panier", "account": "Mon compte", "login": "Connexion", "logout": "Déconnexion",
-    "admin": "Administration", "menu": "Menu", "closeMenu": "Fermer le menu", "openMenu": "Ouvrir le menu",
-    "mainNav": "Navigation principale", "skip": "Aller au contenu"
+  "brand": {
+    "name": "GCA sneakers",
+    "tagline": "Des paires qui ont du style, pour toute la famille."
   },
-  "lang": { "label": "Langue", "fr": "Français", "en": "English", "switchTo": "Passer en {{lang}}" },
-  "cart": { "itemsCount_one": "{{count}} article", "itemsCount_other": "{{count}} articles", "open": "Ouvrir le panier ({{count}})" },
+  "nav": {
+    "home": "Accueil",
+    "shop": "Boutique",
+    "men": "Homme",
+    "women": "Femme",
+    "kids": "Enfant",
+    "finder": "Trouvez votre paire",
+    "store": "Notre boutique",
+    "contact": "Contact",
+    "cart": "Panier",
+    "account": "Mon compte",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "admin": "Administration",
+    "menu": "Menu",
+    "closeMenu": "Fermer le menu",
+    "openMenu": "Ouvrir le menu",
+    "mainNav": "Navigation principale",
+    "skip": "Aller au contenu"
+  },
+  "lang": {
+    "label": "Langue",
+    "fr": "Français",
+    "en": "English",
+    "switchTo": "Passer en {{lang}}"
+  },
+  "cart": {
+    "itemsCount_one": "{{count}} article",
+    "itemsCount_other": "{{count}} articles",
+    "open": "Ouvrir le panier ({{count}})"
+  },
   "home": {
     "seoTitle": "GCA sneakers — Sneakers et chaussures Homme, Femme, Enfant",
     "seoDescription": "Sneakers, chaussures de sport, de ville et pour enfants. Choisissez votre pointure, commandez en ligne et finalisez sur WhatsApp.",
@@ -21,9 +46,23 @@
       "ctaShop": "Voir la boutique",
       "badge": "-{{percent}} % dès {{count}} paires"
     },
-    "categories": { "title": "Choisis ton style", "subtitle": "Toutes nos familles de chaussures", "see": "Voir" },
-    "genders": { "title": "Pour toute la famille", "men": "Homme", "women": "Femme", "kids": "Enfant", "cta": "Découvrir" },
-    "featured": { "title": "Coups de cœur", "subtitle": "Les paires que nos clients adorent", "seeAll": "Tout voir" },
+    "categories": {
+      "title": "Choisis ton style",
+      "subtitle": "Toutes nos familles de chaussures",
+      "see": "Voir"
+    },
+    "genders": {
+      "title": "Pour toute la famille",
+      "men": "Homme",
+      "women": "Femme",
+      "kids": "Enfant",
+      "cta": "Découvrir"
+    },
+    "featured": {
+      "title": "Coups de cœur",
+      "subtitle": "Les paires que nos clients adorent",
+      "seeAll": "Tout voir"
+    },
     "promo": {
       "title": "Achète malin : -{{percent}} % dès {{count}} paires",
       "text": "La remise s'applique automatiquement dans ton panier. Pour toi, pour la famille, pour les amis.",
@@ -31,10 +70,22 @@
     },
     "args": {
       "title": "Pourquoi GCA sneakers ?",
-      "delivery": { "title": "Livraison rapide", "text": "Chez toi en un temps record, ou retrait gratuit à notre entrepôt." },
-      "quality": { "title": "Qualité vérifiée", "text": "Chaque paire est contrôlée avant de partir." },
-      "whatsapp": { "title": "Paiement simple", "text": "Tu commandes en ligne, tu finalises sur WhatsApp avec notre équipe." },
-      "sizes": { "title": "Ta pointure en stock", "text": "Le stock de chaque pointure est affiché en temps réel." }
+      "delivery": {
+        "title": "Livraison rapide",
+        "text": "Chez toi en un temps record, ou retrait gratuit à notre entrepôt."
+      },
+      "quality": {
+        "title": "Qualité vérifiée",
+        "text": "Chaque paire est contrôlée avant de partir."
+      },
+      "whatsapp": {
+        "title": "Paiement simple",
+        "text": "Tu commandes en ligne, tu finalises sur WhatsApp avec notre équipe."
+      },
+      "sizes": {
+        "title": "Ta pointure en stock",
+        "text": "Le stock de chaque pointure est affiché en temps réel."
+      }
     },
     "store": {
       "title": "Viens nous voir",
@@ -44,27 +95,57 @@
     "testimonials": {
       "title": "Ils marchent avec nous",
       "items": [
-        { "name": "Aïcha K.", "text": "Livraison super rapide et la pointure était parfaite. Je recommande !" },
-        { "name": "Junior D.", "text": "Le questionnaire m'a trouvé mes baskets en 1 minute. Top." },
-        { "name": "Mariam T.", "text": "J'ai pris 5 paires pour toute la famille avec la remise, merci GCA !" }
+        {
+          "name": "Aïcha K.",
+          "text": "Livraison super rapide et la pointure était parfaite. Je recommande !"
+        },
+        {
+          "name": "Junior D.",
+          "text": "Le questionnaire m'a trouvé mes baskets en 1 minute. Top."
+        },
+        {
+          "name": "Mariam T.",
+          "text": "J'ai pris 5 paires pour toute la famille avec la remise, merci GCA !"
+        }
       ]
     }
   },
   "footer": {
     "about": "GCA sneakers, ta boutique de chaussures pour homme, femme et enfant.",
-    "shop": "Boutique", "help": "Aide", "follow": "Suis-nous",
+    "shop": "Boutique",
+    "help": "Aide",
+    "follow": "Suis-nous",
     "rights": "© {{year}} GCA sneakers. Tous droits réservés.",
     "payment": "Paiement finalisé sur WhatsApp avec notre équipe."
   },
-  "social": { "tiktok": "TikTok", "facebook": "Facebook", "instagram": "Instagram", "whatsapp": "WhatsApp", "openIn": "Ouvrir {{name}} (nouvel onglet)" },
+  "social": {
+    "tiktok": "TikTok",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "openIn": "Ouvrir {{name}} (nouvel onglet)"
+  },
   "common": {
-    "loading": "Chargement…", "retry": "Réessayer", "back": "Retour", "error": "Une erreur est survenue. Réessaie dans un instant.",
-    "comingSoon": "Cette page arrive très bientôt.", "backHome": "Retour à l'accueil"
+    "loading": "Chargement…",
+    "retry": "Réessayer",
+    "back": "Retour",
+    "error": "Une erreur est survenue. Réessaie dans un instant.",
+    "comingSoon": "Cette page arrive très bientôt.",
+    "backHome": "Retour à l'accueil"
   },
   "pages": {
-    "shop": "Boutique", "category": "Catégorie", "product": "Produit", "finder": "Trouvez votre paire",
-    "cart": "Panier", "checkout": "Commande", "confirmation": "Confirmation", "login": "Connexion",
-    "register": "Inscription", "account": "Mon compte", "contact": "Contact", "store": "Notre boutique"
+    "shop": "Boutique",
+    "category": "Catégorie",
+    "product": "Produit",
+    "finder": "Trouvez votre paire",
+    "cart": "Panier",
+    "checkout": "Commande",
+    "confirmation": "Confirmation",
+    "login": "Connexion",
+    "register": "Inscription",
+    "account": "Mon compte",
+    "contact": "Contact",
+    "store": "Notre boutique"
   },
   "notFound": {
     "seoTitle": "Page introuvable — GCA sneakers",
@@ -73,5 +154,156 @@
     "text": "La page que tu cherches n'existe pas ou a été déplacée.",
     "cta": "Retour à l'accueil",
     "shop": "Voir la boutique"
+  },
+  "enums": {
+    "gender": {
+      "men": "Homme",
+      "women": "Femme",
+      "kids": "Enfant"
+    },
+    "shoeType": {
+      "sneakers": "Baskets",
+      "city": "Ville",
+      "sport": "Sport",
+      "boots": "Bottes & bottines",
+      "sandals": "Sandales",
+      "formal": "Habillées",
+      "school": "École",
+      "slippers": "Claquettes"
+    },
+    "usage": {
+      "daily": "Quotidien",
+      "work": "Travail",
+      "sport": "Sport",
+      "ceremony": "Cérémonie",
+      "hiking": "Randonnée"
+    },
+    "color": {
+      "black": "Noir",
+      "white": "Blanc",
+      "grey": "Gris",
+      "beige": "Beige",
+      "brown": "Marron",
+      "blue": "Bleu",
+      "red": "Rouge",
+      "pink": "Rose",
+      "green": "Vert",
+      "yellow": "Jaune",
+      "orange": "Orange",
+      "purple": "Violet",
+      "multi": "Multicolore"
+    },
+    "material": {
+      "leather": "Cuir",
+      "synthetic": "Synthétique",
+      "canvas": "Toile",
+      "suede": "Daim",
+      "mesh": "Mesh respirant",
+      "textile": "Textile",
+      "rubber": "Caoutchouc"
+    },
+    "budget": {
+      "lt30": "Moins de 30 000",
+      "30to60": "30 000 – 60 000",
+      "60to100": "60 000 – 100 000",
+      "gt100": "Plus de 100 000"
+    }
+  },
+  "shop": {
+    "seoTitle": "Boutique — Chaussures Homme, Femme, Enfant | GCA sneakers",
+    "seoDescription": "Toutes nos chaussures : sneakers, sport, ville, bottes, sandales et école. Filtrez par pointure, prix et disponibilité.",
+    "title": "La boutique",
+    "titleGender": "Chaussures {{gender}}",
+    "results_zero": "Aucune paire",
+    "results_one": "{{count}} paire",
+    "results_other": "{{count}} paires",
+    "sort": "Trier par",
+    "sorts": {
+      "newest": "Nouveautés",
+      "price_asc": "Prix croissant",
+      "price_desc": "Prix décroissant",
+      "promo": "Meilleures promos"
+    },
+    "empty": {
+      "title": "Aucune paire ne correspond",
+      "text": "Essaie d'enlever un filtre ou d'élargir ton budget.",
+      "reset": "Effacer les filtres"
+    },
+    "error": "Impossible de charger les produits."
+  },
+  "filters": {
+    "title": "Filtres",
+    "open": "Filtres",
+    "openCount": "Filtres ({{count}})",
+    "close": "Fermer les filtres",
+    "apply_one": "Voir {{count}} paire",
+    "apply_other": "Voir {{count}} paires",
+    "clear": "Tout effacer",
+    "remove": "Retirer le filtre {{label}}",
+    "active": "Filtres actifs",
+    "gender": "Genre",
+    "category": "Catégorie",
+    "type": "Type",
+    "size": "Pointure",
+    "price": "Prix",
+    "budget": "Budget",
+    "min": "Min",
+    "max": "Max",
+    "availability": "Disponibilité",
+    "inStock": "En stock uniquement",
+    "color": "Couleur",
+    "material": "Matière",
+    "usage": "Usage",
+    "all": "Tous",
+    "priceRange": "{{min}} – {{max}}",
+    "sizeChip": "Pointure {{size}}"
+  },
+  "product": {
+    "promo": "-{{percent}} %",
+    "outOfStock": "Rupture",
+    "newIn": "Nouveau",
+    "featured": "Coup de cœur",
+    "sizesCount_one": "{{count}} pointure dispo",
+    "sizesCount_other": "{{count}} pointures dispo",
+    "from": "à partir de",
+    "oldPrice": "Prix initial : {{price}}",
+    "save": "Tu économises {{amount}}",
+    "chooseSize": "Choisis ta pointure",
+    "sizeRequired": "Choisis d'abord ta pointure.",
+    "size": "Pointure {{size}}",
+    "sizeOut": "Pointure {{size}} : épuisée",
+    "sizeLeft": "Pointure {{size}} : plus que {{count}} en stock",
+    "lowStock_one": "Plus que {{count}} paire !",
+    "lowStock_other": "Plus que {{count}} paires !",
+    "inStock": "En stock",
+    "quantity": "Quantité",
+    "decrease": "Diminuer la quantité",
+    "increase": "Augmenter la quantité",
+    "addToCart": "Ajouter au panier",
+    "added": "Ajouté !",
+    "addedToast": "{{name}} (pointure {{size}}) ajouté au panier",
+    "viewCart": "Voir le panier",
+    "maxReached": "Stock maximum atteint pour cette pointure.",
+    "promoHint": "-{{percent}} % sur tout le panier dès {{count}} paires",
+    "description": "Description",
+    "details": "Caractéristiques",
+    "delivery": "Livraison & retrait",
+    "deliveryText": "Livraison à ton adresse ({{fee}}) ou retrait gratuit à notre entrepôt. Paiement finalisé sur WhatsApp.",
+    "related": "Tu aimeras aussi",
+    "notFound": "Ce produit n'existe pas ou n'est plus disponible.",
+    "breadcrumb": "Fil d'Ariane",
+    "gallery": "Galerie photos de {{name}}",
+    "view": "Vue {{n}}",
+    "showView": "Afficher la vue {{n}}",
+    "prev": "Photo précédente",
+    "next": "Photo suivante",
+    "zoom": "Agrandir la photo",
+    "closeZoom": "Fermer l'agrandissement",
+    "mode3d": "Voir en 3D",
+    "mode360": "Vue 360°",
+    "modePhotos": "Photos",
+    "dragToRotate": "Fais glisser pour tourner la chaussure",
+    "loading3d": "Chargement du modèle 3D…",
+    "viewer3d": "Modèle 3D de {{name}} : fais glisser pour tourner, pince ou molette pour zoomer"
   }
 }

@@ -9,12 +9,14 @@ import { LANGS, ROUTES } from './lib/routes';
 const Home = lazy(() => import('./pages/Home'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const ComingSoon = lazy(() => import('./pages/ComingSoon'));
+const Shop = lazy(() => import('./pages/Shop'));
+const Product = lazy(() => import('./pages/Product'));
 
 // Pages des étapes suivantes : remplacées au fur et à mesure.
 const PAGES = {
-  shop: <ComingSoon titleKey="pages.shop" />,
-  category: <ComingSoon titleKey="pages.category" />,
-  product: <ComingSoon titleKey="pages.product" />,
+  shop: <Shop />,
+  category: <Shop />,
+  product: <Product />,
   finder: <ComingSoon titleKey="pages.finder" />,
   cart: <ComingSoon titleKey="pages.cart" />,
   checkout: <ComingSoon titleKey="pages.checkout" />,

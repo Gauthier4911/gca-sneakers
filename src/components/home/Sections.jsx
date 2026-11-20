@@ -12,6 +12,8 @@ import { SocialLinks } from '../layout/Footer';
 import { useLang } from '../../hooks/useLang';
 import { useSettings } from '../../context/SettingsContext';
 import { supabase } from '../../lib/supabase';
+import ProductGrid from '../product/ProductGrid';
+import { useCatalog } from '../../hooks/useCatalog';
 
 export function SectionTitle({ title, subtitle, light = false }) {
   return (
@@ -186,6 +188,24 @@ export function StoreTeaser() {
           </div>
         </div>
       </Reveal>
+    </section>
+  );
+}
+
+/* ---------- Coups de cœur (is_featured) --------------------------------- */
+export function FeaturedProducts() {
+  const { t } = useTranslation();
+  const { to } = useLang();
+  const { products, loading } = useCatalog();
+  const featured = products.filter((p) => p.is_featured).slice(0, 8);
+  if (!loading && featured.length === 0) return null;
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+      <SectionTitle title={t('home.featured.title')} subtitle={t('home.featured.subtitle')} />
+      <ProductGrid products={featured} loading={loading} skeletons={4} className="grid-cols-2 lg:grid-cols-4" />
+      <div className="mt-10 text-center">
+        <Button to={to('shop')} variant="outline">{t('home.featured.seeAll')} <ArrowRight className="h-5 w-5" aria-hidden /></Button>
+      </div>
     </section>
   );
 }

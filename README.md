@@ -2,7 +2,7 @@
 
 Boutique en ligne de chaussures (Homme, Femme, Enfant). Stack : React (Vite) + Tailwind + Framer Motion + i18next, avec Supabase pour la base, l'authentification et le stockage. Le paiement se finalise sur WhatsApp.
 
-> État : **étape 2/10 terminée** (base de données, logo, structure du site, page d'accueil).
+> État : **étape 3/10 terminée** (base de données, logo, structure, accueil, boutique avec filtres, fiche produit).
 
 ## Lancer le site en local
 
@@ -78,3 +78,14 @@ Polices : **Lexend** (titres, proche du logo) + **Inter** (texte).
 ## 6. Logo
 
 Fichiers dans `public/logo/` : `gca-logo.svg` (couleur, fond blanc), `gca-logo-white.svg` (fond vert ou foncé), `gca-logo-mono.svg`, `gca-icon.svg` (favicon et avatar des réseaux, sur fond vert forêt). Aperçu : `docs/logo-preview.png`. Régénération : `scripts/build-logo.mjs`.
+
+## 7. Photos et vue 3D des chaussures
+
+- **4 photos obligatoires** par chaussure : un produit ne peut pas être activé sans elles. Conseil : fond uni, même cadrage pour les 4 vues (profil droit, profil gauche, trois-quarts, détail), format carré, 1200×1200 px, en WebP ou JPG.
+- **Vue 360°** : automatique pour toutes les chaussures. Le client fait glisser la souris ou le doigt pour faire tourner la chaussure à travers ses 4 photos.
+- **Vraie 3D (facultatif)** : si tu ajoutes un fichier `.glb` (champ `model_3d_url`), le bouton « Voir en 3D » apparaît. Le client peut alors tourner la chaussure dans tous les sens et zoomer. Pour créer un `.glb` gratuitement : appli **Polycam** ou **Luma AI** sur téléphone (scan en tournant autour de la chaussure), puis export en GLB **sans compression Draco**, moins de 15 Mo.
+- Les illustrations de démo sont dans `public/demo` (générées par `scripts/generate-demo-images.mjs`) : remplace-les par tes vraies photos depuis l'admin (étape 7).
+
+## 8. Stock en temps réel
+
+La fiche produit est abonnée aux changements de stock (Supabase Realtime) : si une pointure est vendue pendant qu'un client regarde, elle se met à jour instantanément.

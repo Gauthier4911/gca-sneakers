@@ -10,6 +10,7 @@
     "logo": "node scripts/build-logo.mjs public/logo"
   },
   "dependencies": {
+    "@google/model-viewer": "^3.5.0",
     "@hookform/resolvers": "^3.9.1",
     "@supabase/supabase-js": "^2.46.1",
     "framer-motion": "^11.11.17",
