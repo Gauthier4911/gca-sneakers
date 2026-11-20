@@ -20,7 +20,9 @@ $$;
 
 -- ---------- updated_at ------------------------------------------------------
 create or replace function public.touch_updated_at()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql
+set search_path = public
+as $$
 begin
   new.updated_at := now();
   return new;
@@ -66,7 +68,9 @@ create trigger on_auth_user_created
 -- (double sécurité : le droit UPDATE sur la colonne role est aussi retiré en 003)
 -- Le passage en admin se fait dans le SQL Editor Supabase (rôle postgres).
 create or replace function public.guard_profile_role()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql
+set search_path = public
+as $$
 begin
   if new.role is distinct from old.role
      and current_user in ('anon', 'authenticated') then
@@ -80,7 +84,9 @@ create trigger profiles_guard_role before update on public.profiles
 
 -- ---------- Un produit actif doit avoir exactement 4 photos -----------------
 create or replace function public.check_product_has_4_images()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql
+set search_path = public
+as $$
 begin
   if new.is_active and
      (select count(*) from public.product_images where product_id = new.id) <> 4 then
@@ -95,7 +101,9 @@ create trigger products_require_images
 
 -- Empêche de supprimer une photo d'un produit actif (on remplace l'URL à la place)
 create or replace function public.guard_active_product_images()
-returns trigger language plpgsql as $$
+returns trigger language plpgsql
+set search_path = public
+as $$
 begin
   if exists (select 1 from public.products where id = old.product_id and is_active) then
     raise exception 'PRODUCT_NEEDS_4_IMAGES';

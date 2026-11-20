@@ -48,19 +48,23 @@ Les pointures ne sont pas fixées à l'avance : quand tu ajoutes une chaussure, 
 
 ## 5. Direction artistique
 
-Couleurs : **vert, orange or et blanc** (aperçu : `docs/palette.png`).
+Couleurs : **vert, orange or et blanc**, avec un dégradé signature or → orange (aperçu : `docs/palette.png`).
 
-| Rôle | Couleur | Hex | Règle d'usage |
+| Rôle | Nom | Hex | Usage (contraste vérifié AA) |
 |---|---|---|---|
-| Primaire | Vert GCA | `#0B6E4F` | Boutons, titres, liens. Texte blanc dessus (contraste 6.3:1) |
-| Accent | Orange or | `#F2A20C` | Boutons d'action, badges promo, logo. **Toujours avec un texte vert nuit dessus** (7.3:1), jamais de petit texte or sur blanc |
-| Accent texte | Orange foncé | `#B45F06` | Prix promo et liens orange sur fond blanc (4.6:1) |
+| Fond fort | Vert forêt | `#053B2C` | Hero, pied de page, titres. Texte blanc (12.6:1) ou or (7.3:1) dessus |
+| Primaire | Émeraude | `#047857` | Boutons secondaires, liens, logo. Texte blanc (5.5:1) |
+| Accent | Menthe vive | `#34D399` | Petits accents sur fond forêt (6.6:1) |
+| Action | Or soleil | `#FFB800` | Boutons « Ajouter au panier », badges. Texte forêt (7.3:1) |
+| Promo | Orange mangue | `#FF7A00` | Fin du dégradé signature, promos. Texte forêt (4.8:1) |
+| Texte orange | Ambre | `#B45309` | Prix promo sur fond blanc (5.0:1) |
+| Fond doux | Crème | `#FFF8E7` | Sections alternées |
 | Fond | Blanc | `#FFFFFF` | Fond principal |
-| Fond alterné | Ivoire | `#FFF9EC` | Sections alternées, cartes |
-| Texte | Vert nuit | `#0E2A1F` | Texte courant, pied de page (fond) |
+
+Règle d'or : **jamais de texte or ou orange sur fond blanc** (illisible). On utilise l'ambre à la place.
 
 Polices : **Lexend** (titres, proche du logo) + **Inter** (texte).
 
 ## 6. Logo
 
-Fichiers dans `public/logo/` : `gca-logo.svg` (couleur, fond blanc), `gca-logo-white.svg` (fond vert ou foncé), `gca-logo-mono.svg`, `gca-icon.svg` (favicon et avatar des réseaux). Aperçu : `docs/logo-preview.png`. Régénération : `scripts/build-logo.mjs`.
+Fichiers dans `public/logo/` : `gca-logo.svg` (couleur, fond blanc), `gca-logo-white.svg` (fond vert ou foncé), `gca-logo-mono.svg`, `gca-icon.svg` (favicon et avatar des réseaux, sur fond vert forêt). Aperçu : `docs/logo-preview.png`. Régénération : `scripts/build-logo.mjs`.
