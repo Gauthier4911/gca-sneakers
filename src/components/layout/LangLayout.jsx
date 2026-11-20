@@ -3,6 +3,7 @@ import { Navigate, Outlet, useLocation, useParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import i18n, { LANG_STORAGE_KEY } from '../../lib/i18n';
 import { LANGS } from '../../lib/routes';
+import { trackView } from '../../lib/analytics';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -18,7 +19,10 @@ export default function LangLayout() {
     document.documentElement.lang = lang;
     try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch { /* ignore */ }
   }, [lang, valid]);
-  useEffect(() => { window.scrollTo({ top: 0 }); }, [location.pathname]);
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+    if (valid) trackView(location.pathname, lang); // statistiques de visite anonymes
+  }, [location.pathname]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!valid) return <Navigate to={`/fr${location.pathname}`} replace />;
 

@@ -26,7 +26,7 @@ npm run dev               # http://localhost:5173
 
 1. Créer un projet sur https://supabase.com (région conseillée : `eu-west-3` Paris).
 2. **SQL Editor** → exécuter dans l'ordre :
-   `supabase/migrations/001_schema.sql` → `002_functions.sql` → `003_rls.sql` → `004_storage.sql` → `005_realtime_alt.sql` → `006_rls_perf.sql`, puis `supabase/seed.sql` (données de démo, facultatif).
+   `supabase/migrations/001_schema.sql` → `002_functions.sql` → `003_rls.sql` → `004_storage.sql` → `005_realtime_alt.sql` → `006_rls_perf.sql` → `007_analytics.sql`, puis `supabase/seed.sql` (données de démo, facultatif).
 3. **Désactiver la confirmation email** : *Authentication → Sign In / Providers → Email* → décocher **Confirm email**.
 4. **Limites anti-abus** (recommandé) : *Authentication → Rate Limits* (laisser les valeurs par défaut ou les baisser).
 5. *Project Settings → API Keys* : copier l'**URL** et la clé **publishable / anon** dans `.env`.
@@ -60,7 +60,9 @@ Pour retirer les droits : même requête avec `role = 'client'`. L'espace admin 
 - **Commandes** : filtres par statut, recherche, détail, bouton « Contacter sur WhatsApp », changement de statut `pending → confirmed → paid → shipped → delivered` ou `cancelled`. Le **stock est retiré automatiquement au passage en « Payée »** et remis si la commande est annulée après paiement.
 - **Produits** : création et modification, **4 photos** (converties en WebP 1200 px), modèle 3D `.glb` facultatif, pointures et stock (avec ajout d'une plage, ex. 36 → 45), prix promo, coup de cœur, visible ou masqué.
 - **Catégories** : création, modification, ordre, suppression.
-- **Paramètres** : numéro WhatsApp de la boutique, adresse de l'entrepôt, horaires, frais de livraison, devise, promo (nombre d'articles et %), lien de la vidéo (YouTube ou TikTok), photos de l'entrepôt, liens TikTok, Instagram, Facebook et WhatsApp.
+- **Visiteurs** (dans le tableau de bord) : visiteurs uniques, pages vues, visiteurs du jour et en ce moment, courbe par jour, pages les plus vues, provenance (Google, Facebook, WhatsApp…), mobile / tablette / ordinateur, FR / EN. Comptage **anonyme** : aucun cookie, aucune adresse IP, « Ne pas suivre » respecté, visites de l'admin non comptées.
+- **Contenu du site** : logo (fond clair et fond foncé), titres et descriptions **Google** de chaque page, textes de l'accueil (titre, sous-titre, boutons, sections, arguments), témoignages, slogan, pied de page, pages Boutique et Contact, message WhatsApp de commande. **Tout en FR et EN** ; un champ vide garde le texte d'origine.
+- **Paramètres** : numéro WhatsApp de la boutique, adresse de l'entrepôt, horaires, frais de livraison, devise, promo (nombre d'articles et %), vidéo (lien YouTube ou TikTok, ou envoi direct d'un MP4 de 50 Mo max), photos de l'entrepôt, liens TikTok, Instagram, Facebook et WhatsApp.
 
 ## 6. Parcours client
 

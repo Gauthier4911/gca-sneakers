@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { useId } from 'react';
 import paths from './logo-paths.json';
+import { useSettings } from '../../context/SettingsContext';
 
 /**
  * Logo GCA sneakers en SVG, animé : la sneaker se dessine, puis la semelle
@@ -8,6 +9,9 @@ import paths from './logo-paths.json';
  */
 export default function Logo({ variant = 'color', animate = true, className = 'h-10 w-auto', title = 'GCA sneakers' }) {
   const reduce = useReducedMotion();
+  const { settings } = useSettings();
+  // Logo personnalisé envoyé depuis l'admin (sinon : logo animé d'origine)
+  const custom = variant === 'light' ? (settings.logo_light_url || settings.logo_url) : settings.logo_url;
   const gid = useId().replace(/:/g, '');
   const shoe = variant === 'light' ? '#FFFFFF' : '#047857';
   const word = variant === 'light' ? '#FFFFFF' : '#053B2C';
@@ -22,6 +26,9 @@ export default function Logo({ variant = 'color', animate = true, className = 'h
     : {});
   const stroke = { fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' };
 
+  if (custom && /^https:\/\//.test(custom)) {
+    return <img src={custom} alt={title} className={`${className} object-contain`} decoding="async" />;
+  }
   return (
     <svg viewBox={paths.viewBox} className={className} role="img" aria-label={title}>
       <title>{title}</title>

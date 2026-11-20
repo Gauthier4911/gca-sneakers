@@ -48,6 +48,24 @@ async function rest(q) {
   return res.json();
 }
 
+// Textes personnalisés depuis l'admin (Contenu du site) : titres et descriptions SEO
+const setPath = (obj, key, value) => {
+  const parts = key.split('.'); let o = obj;
+  parts.slice(0, -1).forEach((k) => { o[k] = o[k] && typeof o[k] === 'object' ? o[k] : {}; o = o[k]; });
+  o[parts.at(-1)] = value;
+};
+try {
+  const rows = await rest('settings?select=key,value&key=eq.content');
+  const content = rows[0]?.value ?? {};
+  for (const lang of ['fr', 'en']) {
+    for (const [k, v] of Object.entries(content[lang] ?? {})) {
+      if (typeof v === 'string' && v.trim() && /\.(seoTitle|seoDescription)$/.test(k)) setPath(L[lang], k, v.trim().slice(0, 300));
+    }
+  }
+} catch (e) {
+  console.warn('[postbuild] contenu personnalisé non lu :', e.message);
+}
+
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 function render({ lang, title, description, pathFr, pathEn, image, type = 'website', jsonLd = [] }) {
   const self = lang === 'fr' ? pathFr : pathEn;

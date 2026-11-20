@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ImagePlus, X } from 'lucide-react';
-import { removeByUrl, uploadSiteImage } from './storage';
+import { removeByUrl, uploadSiteImage, uploadSiteVideo } from './storage';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { Card, Field, PageTitle } from './ui';
@@ -69,6 +69,18 @@ export default function Settings() {
       toast.error(['badType', 'tooBig'].includes(e.message) ? t(`admin.products.image.${e.message}`) : t('admin.common.error', { message: e.message }));
     }
   };
+  const [videoBusy, setVideoBusy] = useState(false);
+  const addVideo = async (file) => {
+    if (!file) return;
+    setVideoBusy(true);
+    try {
+      const url = await uploadSiteVideo(file);
+      setForm((f) => ({ ...f, video_url: url }));
+      toast.success(t('admin.settings.fields.videoUploaded'));
+    } catch (e) {
+      toast.error(e.message === 'videoBad' ? t('admin.settings.fields.videoBad') : t('admin.common.error', { message: e.message }));
+    } finally { setVideoBusy(false); }
+  };
   const removePhoto = (url) => { setForm((f) => ({ ...f, store_photos: f.store_photos.filter((u) => u !== url) })); removeByUrl(url); };
 
   const F = (k, props = {}) => <Field label={t(`admin.settings.fields.${k}`)} value={form[k]} onChange={set(k)} error={errors[k]} {...props} />;
@@ -103,6 +115,10 @@ export default function Settings() {
         <Card title={t('admin.settings.groups.media')}>
           <div className="space-y-4">
             {F('video_url', { type: 'url', hint: t('admin.settings.fields.videoHint') })}
+            <label className="inline-flex cursor-pointer items-center gap-2 rounded-full border-2 border-forest/15 px-4 py-2 text-sm font-semibold text-forest hover:border-emerald">
+              <ImagePlus className="h-4 w-4" aria-hidden /> {videoBusy ? t('admin.settings.fields.uploading') : t('admin.settings.fields.uploadVideo')}
+              <input type="file" accept="video/mp4" className="sr-only" disabled={videoBusy} onChange={(e) => addVideo(e.target.files?.[0])} />
+            </label>
             <div>
               <p className="mb-2 text-sm font-semibold text-forest">{t('admin.settings.fields.store_photos')}</p>
               <div className="grid grid-cols-3 gap-3">

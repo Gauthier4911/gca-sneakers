@@ -29,6 +29,7 @@ const AdminProductForm = lazy(() => import('./admin/ProductForm'));
 const AdminCategories = lazy(() => import('./admin/Categories'));
 const AdminOrders = lazy(() => import('./admin/Orders'));
 const AdminSettings = lazy(() => import('./admin/Settings'));
+const AdminContent = lazy(() => import('./admin/Content'));
 
 const PAGES = {
   shop: <Shop />,
@@ -57,6 +58,7 @@ export default function AppRoutes() {
           <Route path="produits/nouveau" element={<AdminProductForm />} />
           <Route path="produits/:id" element={<AdminProductForm />} />
           <Route path="categories" element={<AdminCategories />} />
+          <Route path="contenu" element={<AdminContent />} />
           <Route path="parametres" element={<AdminSettings />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Route>

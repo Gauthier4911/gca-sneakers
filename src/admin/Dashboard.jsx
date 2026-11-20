@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { AlertTriangle, Clock, ShoppingCart, TrendingUp, Wallet } from 'lucide-react';
 import { Card, PageTitle } from './ui';
+import Analytics from './Analytics';
 import StatusBadge from '../components/ui/StatusBadge';
 import { supabase } from '../lib/supabase';
 import { formatPrice, formatSize } from '../lib/format';
@@ -74,6 +75,8 @@ export default function Dashboard() {
             ))}
           </div>
           <p className="text-xs text-ink-soft">{t('admin.dashboard.revenueNote')}</p>
+
+          <Analytics days={days} />
 
           <Card title={t('admin.dashboard.salesByDay')}>
             {stats.revenue_period > 0 ? (

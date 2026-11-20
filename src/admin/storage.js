@@ -54,3 +54,23 @@ export async function uploadSiteImage(file) {
   if (error) throw error;
   return publicUrl('site-media', path);
 }
+
+/** Vidéo de présentation (MP4, 50 Mo max) — bucket site-media. */
+export async function uploadSiteVideo(file) {
+  if (file.type !== 'video/mp4' || file.size > 50 * 1024 * 1024) throw new Error('videoBad');
+  const path = `video/${Date.now()}.mp4`;
+  const { error } = await supabase.storage.from('site-media').upload(path, file, { contentType: 'video/mp4', cacheControl: '31536000' });
+  if (error) throw error;
+  return publicUrl('site-media', path);
+}
+
+/** Logo : on garde la transparence et une bonne résolution (WebP 800 px). */
+export async function uploadLogo(file) {
+  if (!IMAGE_TYPES.includes(file.type)) throw new Error('badType');
+  if (file.size > IMAGE_MAX) throw new Error('tooBig');
+  const blob = await toWebp(file, 800, 0.92);
+  const path = `logo/${Date.now()}.webp`;
+  const { error } = await supabase.storage.from('site-media').upload(path, blob, { contentType: 'image/webp', cacheControl: '31536000' });
+  if (error) throw error;
+  return publicUrl('site-media', path);
+}
