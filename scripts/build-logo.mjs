@@ -42,5 +42,5 @@ const iconOnly = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" 
 <g transform="translate(18 120)">${stroke(upper, '#FFFFFF', 22)}${stroke(laces, '#FFFFFF', 18)}${stroke(loop, '#FFFFFF', 18)}${stroke('M84 352 H564', GOLD, 26)}</g></svg>`;
 fs.writeFileSync(out + '/gca-icon.svg', iconOnly);
 // Données pour le composant React animé
-fs.writeFileSync(out + '/logo-paths.json', JSON.stringify({ upper, laces, loop, sole, pathA, pathB, viewBox: `40 30 ${right - 40} 500` }));
+fs.writeFileSync(new URL('../src/components/ui/logo-paths.json', import.meta.url), JSON.stringify({ upper, laces, loop, sole, pathA, pathB, viewBox: `40 30 ${right - 40} 500` }));
 console.log('ok', right);

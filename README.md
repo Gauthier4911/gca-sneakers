@@ -2,7 +2,17 @@
 
 Boutique en ligne de chaussures (Homme, Femme, Enfant). Stack : React (Vite) + Tailwind + Framer Motion + i18next, avec Supabase pour la base, l'authentification et le stockage. Le paiement se finalise sur WhatsApp.
 
-> État : **étape 1/10 terminée** (base de données + logo). Le front arrive à l'étape 2.
+> État : **étape 2/10 terminée** (base de données, logo, structure du site, page d'accueil).
+
+## Lancer le site en local
+
+```bash
+npm install
+cp .env.example .env   # puis remplir l'URL et la clé publique Supabase
+npm run dev            # http://localhost:5173
+```
+
+`npm run build` produit la version de production dans `dist/` (c'est ce que Vercel exécute).
 
 ## 1. Créer le projet Supabase (gratuit)
 

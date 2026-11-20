@@ -1,0 +1,77 @@
+{
+  "brand": { "name": "GCA sneakers", "tagline": "Stylish pairs for the whole family." },
+  "nav": {
+    "home": "Home", "shop": "Shop", "men": "Men", "women": "Women", "kids": "Kids",
+    "finder": "Find your pair", "store": "Our store", "contact": "Contact",
+    "cart": "Cart", "account": "My account", "login": "Log in", "logout": "Log out",
+    "admin": "Admin", "menu": "Menu", "closeMenu": "Close menu", "openMenu": "Open menu",
+    "mainNav": "Main navigation", "skip": "Skip to content"
+  },
+  "lang": { "label": "Language", "fr": "Français", "en": "English", "switchTo": "Switch to {{lang}}" },
+  "cart": { "itemsCount_one": "{{count}} item", "itemsCount_other": "{{count}} items", "open": "Open cart ({{count}})" },
+  "home": {
+    "seoTitle": "GCA sneakers — Sneakers and shoes for Men, Women, Kids",
+    "seoDescription": "Sneakers, sports, city and kids' shoes. Pick your size, order online and complete your purchase on WhatsApp.",
+    "hero": {
+      "eyebrow": "New collection",
+      "title1": "Walk with",
+      "title2": "style.",
+      "subtitle": "Sneakers, sport, city, school: find the perfect pair for you and the whole family. Fast delivery or free pickup at our warehouse.",
+      "ctaFinder": "Find your pair",
+      "ctaShop": "Browse the shop",
+      "badge": "-{{percent}}% from {{count}} pairs"
+    },
+    "categories": { "title": "Pick your style", "subtitle": "All our shoe families", "see": "See" },
+    "genders": { "title": "For the whole family", "men": "Men", "women": "Women", "kids": "Kids", "cta": "Discover" },
+    "featured": { "title": "Staff picks", "subtitle": "The pairs our customers love", "seeAll": "See all" },
+    "promo": {
+      "title": "Shop smart: -{{percent}}% from {{count}} pairs",
+      "text": "The discount is applied automatically in your cart. For you, the family, your friends.",
+      "cta": "Grab the deal"
+    },
+    "args": {
+      "title": "Why GCA sneakers?",
+      "delivery": { "title": "Fast delivery", "text": "At your door in no time, or free pickup at our warehouse." },
+      "quality": { "title": "Checked quality", "text": "Every pair is inspected before it ships." },
+      "whatsapp": { "title": "Easy payment", "text": "Order online, then complete payment on WhatsApp with our team." },
+      "sizes": { "title": "Your size in stock", "text": "Stock for every size is shown in real time." }
+    },
+    "store": {
+      "title": "Come and see us",
+      "text": "Discover our store and warehouse on video, and follow us on social media.",
+      "cta": "Visit the store"
+    },
+    "testimonials": {
+      "title": "They walk with us",
+      "items": [
+        { "name": "Aïcha K.", "text": "Super fast delivery and the size was perfect. Highly recommend!" },
+        { "name": "Junior D.", "text": "The quiz found my sneakers in 1 minute. Great." },
+        { "name": "Mariam T.", "text": "Got 5 pairs for the whole family with the discount, thanks GCA!" }
+      ]
+    }
+  },
+  "footer": {
+    "about": "GCA sneakers, your shoe store for men, women and kids.",
+    "shop": "Shop", "help": "Help", "follow": "Follow us",
+    "rights": "© {{year}} GCA sneakers. All rights reserved.",
+    "payment": "Payment completed on WhatsApp with our team."
+  },
+  "social": { "tiktok": "TikTok", "facebook": "Facebook", "instagram": "Instagram", "whatsapp": "WhatsApp", "openIn": "Open {{name}} (new tab)" },
+  "common": {
+    "loading": "Loading…", "retry": "Try again", "back": "Back", "error": "Something went wrong. Please try again in a moment.",
+    "comingSoon": "This page is coming very soon.", "backHome": "Back to home"
+  },
+  "pages": {
+    "shop": "Shop", "category": "Category", "product": "Product", "finder": "Find your pair",
+    "cart": "Cart", "checkout": "Checkout", "confirmation": "Confirmation", "login": "Log in",
+    "register": "Sign up", "account": "My account", "contact": "Contact", "store": "Our store"
+  },
+  "notFound": {
+    "seoTitle": "Page not found — GCA sneakers",
+    "code": "404",
+    "title": "Oops, this pair walked away!",
+    "text": "The page you're looking for doesn't exist or has moved.",
+    "cta": "Back to home",
+    "shop": "Browse the shop"
+  }
+}

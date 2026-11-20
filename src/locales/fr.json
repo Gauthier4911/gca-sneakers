@@ -1,0 +1,77 @@
+{
+  "brand": { "name": "GCA sneakers", "tagline": "Des paires qui ont du style, pour toute la famille." },
+  "nav": {
+    "home": "Accueil", "shop": "Boutique", "men": "Homme", "women": "Femme", "kids": "Enfant",
+    "finder": "Trouvez votre paire", "store": "Notre boutique", "contact": "Contact",
+    "cart": "Panier", "account": "Mon compte", "login": "Connexion", "logout": "Déconnexion",
+    "admin": "Administration", "menu": "Menu", "closeMenu": "Fermer le menu", "openMenu": "Ouvrir le menu",
+    "mainNav": "Navigation principale", "skip": "Aller au contenu"
+  },
+  "lang": { "label": "Langue", "fr": "Français", "en": "English", "switchTo": "Passer en {{lang}}" },
+  "cart": { "itemsCount_one": "{{count}} article", "itemsCount_other": "{{count}} articles", "open": "Ouvrir le panier ({{count}})" },
+  "home": {
+    "seoTitle": "GCA sneakers — Sneakers et chaussures Homme, Femme, Enfant",
+    "seoDescription": "Sneakers, chaussures de sport, de ville et pour enfants. Choisissez votre pointure, commandez en ligne et finalisez sur WhatsApp.",
+    "hero": {
+      "eyebrow": "Nouvelle collection",
+      "title1": "Marche avec",
+      "title2": "du style.",
+      "subtitle": "Sneakers, sport, ville, école : trouve la paire parfaite pour toi et toute la famille. Livraison rapide ou retrait gratuit à l'entrepôt.",
+      "ctaFinder": "Trouvez votre paire",
+      "ctaShop": "Voir la boutique",
+      "badge": "-{{percent}} % dès {{count}} paires"
+    },
+    "categories": { "title": "Choisis ton style", "subtitle": "Toutes nos familles de chaussures", "see": "Voir" },
+    "genders": { "title": "Pour toute la famille", "men": "Homme", "women": "Femme", "kids": "Enfant", "cta": "Découvrir" },
+    "featured": { "title": "Coups de cœur", "subtitle": "Les paires que nos clients adorent", "seeAll": "Tout voir" },
+    "promo": {
+      "title": "Achète malin : -{{percent}} % dès {{count}} paires",
+      "text": "La remise s'applique automatiquement dans ton panier. Pour toi, pour la famille, pour les amis.",
+      "cta": "J'en profite"
+    },
+    "args": {
+      "title": "Pourquoi GCA sneakers ?",
+      "delivery": { "title": "Livraison rapide", "text": "Chez toi en un temps record, ou retrait gratuit à notre entrepôt." },
+      "quality": { "title": "Qualité vérifiée", "text": "Chaque paire est contrôlée avant de partir." },
+      "whatsapp": { "title": "Paiement simple", "text": "Tu commandes en ligne, tu finalises sur WhatsApp avec notre équipe." },
+      "sizes": { "title": "Ta pointure en stock", "text": "Le stock de chaque pointure est affiché en temps réel." }
+    },
+    "store": {
+      "title": "Viens nous voir",
+      "text": "Découvre notre boutique et notre entrepôt en vidéo, et suis-nous sur les réseaux.",
+      "cta": "Visiter la boutique"
+    },
+    "testimonials": {
+      "title": "Ils marchent avec nous",
+      "items": [
+        { "name": "Aïcha K.", "text": "Livraison super rapide et la pointure était parfaite. Je recommande !" },
+        { "name": "Junior D.", "text": "Le questionnaire m'a trouvé mes baskets en 1 minute. Top." },
+        { "name": "Mariam T.", "text": "J'ai pris 5 paires pour toute la famille avec la remise, merci GCA !" }
+      ]
+    }
+  },
+  "footer": {
+    "about": "GCA sneakers, ta boutique de chaussures pour homme, femme et enfant.",
+    "shop": "Boutique", "help": "Aide", "follow": "Suis-nous",
+    "rights": "© {{year}} GCA sneakers. Tous droits réservés.",
+    "payment": "Paiement finalisé sur WhatsApp avec notre équipe."
+  },
+  "social": { "tiktok": "TikTok", "facebook": "Facebook", "instagram": "Instagram", "whatsapp": "WhatsApp", "openIn": "Ouvrir {{name}} (nouvel onglet)" },
+  "common": {
+    "loading": "Chargement…", "retry": "Réessayer", "back": "Retour", "error": "Une erreur est survenue. Réessaie dans un instant.",
+    "comingSoon": "Cette page arrive très bientôt.", "backHome": "Retour à l'accueil"
+  },
+  "pages": {
+    "shop": "Boutique", "category": "Catégorie", "product": "Produit", "finder": "Trouvez votre paire",
+    "cart": "Panier", "checkout": "Commande", "confirmation": "Confirmation", "login": "Connexion",
+    "register": "Inscription", "account": "Mon compte", "contact": "Contact", "store": "Notre boutique"
+  },
+  "notFound": {
+    "seoTitle": "Page introuvable — GCA sneakers",
+    "code": "404",
+    "title": "Oups, cette paire s'est fait la malle !",
+    "text": "La page que tu cherches n'existe pas ou a été déplacée.",
+    "cta": "Retour à l'accueil",
+    "shop": "Voir la boutique"
+  }
+}

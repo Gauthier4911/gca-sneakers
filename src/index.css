@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  h1, h2, h3, h4 { font-family: Lexend, system-ui, sans-serif; }
+  ::selection { background: #FFB800; color: #053B2C; }
+  /* Focus toujours visible au clavier */
+  :focus-visible { outline: 3px solid #FFB800; outline-offset: 2px; }
+  #main:focus { outline: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

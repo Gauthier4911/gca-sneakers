@@ -1,0 +1,45 @@
+import { lazy, Suspense } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import LangLayout from './components/layout/LangLayout';
+import PageLoader from './components/ui/PageLoader';
+import { detectLang } from './lib/i18n';
+import { LANGS, ROUTES } from './lib/routes';
+
+// Code splitting : chaque page est un fichier JS séparé, chargé à la demande.
+const Home = lazy(() => import('./pages/Home'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const ComingSoon = lazy(() => import('./pages/ComingSoon'));
+
+// Pages des étapes suivantes : remplacées au fur et à mesure.
+const PAGES = {
+  shop: <ComingSoon titleKey="pages.shop" />,
+  category: <ComingSoon titleKey="pages.category" />,
+  product: <ComingSoon titleKey="pages.product" />,
+  finder: <ComingSoon titleKey="pages.finder" />,
+  cart: <ComingSoon titleKey="pages.cart" />,
+  checkout: <ComingSoon titleKey="pages.checkout" />,
+  confirmation: <ComingSoon titleKey="pages.confirmation" />,
+  login: <ComingSoon titleKey="pages.login" />,
+  register: <ComingSoon titleKey="pages.register" />,
+  account: <ComingSoon titleKey="pages.account" />,
+  contact: <ComingSoon titleKey="pages.contact" />,
+  store: <ComingSoon titleKey="pages.store" />,
+};
+
+export default function AppRoutes() {
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route path="/" element={<Navigate to={`/${detectLang()}`} replace />} />
+        <Route path="/:lang" element={<LangLayout />}>
+          <Route index element={<Home />} />
+          {/* Les chemins FR et EN sont tous déclarés : /fr/boutique et /en/shop */}
+          {LANGS.flatMap((l) => Object.entries(PAGES).map(([key, el]) => (
+            <Route key={`${l}-${key}`} path={ROUTES[key][l]} element={el} />
+          )))}
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  );
+}
