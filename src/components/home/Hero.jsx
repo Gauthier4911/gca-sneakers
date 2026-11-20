@@ -97,8 +97,8 @@ export default function Hero() {
             <Sparkles className="h-4 w-4 text-gold" aria-hidden /> {t('home.hero.eyebrow')}
           </motion.p>
           <h1 className="mt-5 font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
-            <SplitText text={t('home.hero.title1')} delay={0.25} />{' '}
-            <SplitText text={t('home.hero.title2')} delay={0.5} wordClassName="bg-signature bg-clip-text text-transparent" />
+            <SplitText text={t('home.hero.title1')} delay={0.1} />{' '}
+            <SplitText text={t('home.hero.title2')} delay={0.3} wordClassName="bg-signature bg-clip-text text-transparent" />
           </h1>
           <motion.p {...fade(0.8)} className="mt-6 max-w-xl text-lg text-white/85">{t('home.hero.subtitle')}</motion.p>
           <motion.div {...fade(1)} className="mt-9 flex flex-wrap gap-3">

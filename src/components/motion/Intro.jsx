@@ -18,7 +18,7 @@ export default function Intro() {
     if (!show) return undefined;
     try { sessionStorage.setItem('gca-intro', '1'); } catch { /* ignore */ }
     document.documentElement.style.overflow = 'hidden';
-    const t = setTimeout(() => setShow(false), 1900);
+    const t = setTimeout(() => setShow(false), 1250);
     return () => { clearTimeout(t); document.documentElement.style.overflow = ''; };
   }, [show]);
   useEffect(() => { if (!show) document.documentElement.style.overflow = ''; }, [show]);
@@ -33,7 +33,7 @@ export default function Intro() {
           <div className="relative flex flex-col items-center">
             <Logo variant="light" className="h-24 w-auto md:h-32" />
             <div className="mt-8 h-1 w-48 overflow-hidden rounded-full bg-white/10">
-              <motion.div className="h-full bg-signature" initial={{ width: '0%' }} animate={{ width: '100%' }} transition={{ duration: 1.6, ease: 'easeInOut' }} />
+              <motion.div className="h-full bg-signature" initial={{ width: '0%' }} animate={{ width: '100%' }} transition={{ duration: 1.05, ease: 'easeInOut' }} />
             </div>
           </div>
         </motion.div>
